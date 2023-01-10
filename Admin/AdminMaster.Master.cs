@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Admin
 {
-    public partial class SiteMaster : MasterPage
+    public partial class AdminMaster : System.Web.UI.MasterPage
     {
         protected void Page_PreInit(object sender, EventArgs e)
         {

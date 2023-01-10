@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Admin.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="Admin.AdminMaster" %>
 
 <!DOCTYPE html>
 
@@ -18,10 +18,11 @@
     <!-- CUSTOM CSS -->
     <style>
         fieldset { border: 1px solid #ced4da; padding: inherit; border-radius: 4px; } 
-        fieldset > legend { float: initial; width : auto; padding: revert; font-size: initial; margin: 0; }
+        fieldset > legend { float: initial; width: auto; padding: revert; font-size: initial; margin: 0; }
     </style>
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+
 
 </head>
 <body>
