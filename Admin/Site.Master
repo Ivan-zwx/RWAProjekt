@@ -1,71 +1,78 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Admin.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Admin.SiteMaster" %>
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
 
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
+    <!-- TITLE -->
+    <title></title>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- HEAD -->
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- BOOTSTRAP -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- CUSTOM CSS -->
+    <style>
+        fieldset { border: 1px solid #ced4da; padding: inherit; border-radius: 4px; } 
+        fieldset > legend { float: initial; width : auto; padding: revert; font-size: initial; margin: 0; }
+    </style>
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
 
 </head>
 <body>
-    <form runat="server">
-        <asp:ScriptManager runat="server">
-            <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="bootstrap" />
-                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
-            </Scripts>
-        </asp:ScriptManager>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+    <form id="Web_app" runat="server">
+        <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+            <div class='container-fluid'>
+                <a class='navbar-brand' href='/'>RWA AdminSite</a>
+                <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+                    <span class='navbar-toggler-icon'></span>
+                </button>
+                <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+		           <% if ((string)Session["user"] == "admin") { %>
+                    <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+		                    <li class='nav-item'>
+                            <a class='nav-link' href="/Apartments" runat="server" meta:resourcekey="aDashboard">Apartmani</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='/Tags' runat="server" meta:resourcekey="aSettings">Oznake</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='/Users' runat="server" meta:resourcekey="aUsers">Registrirani korisnici</a>
+                        </li>
                     </ul>
+
+                    <ul class='navbar-nav d-flex'>
+                        <li class='nav-item'>
+                            <asp:Button class='nav-link btn btn-danger text-white' ID="btnLogout" meta:resourcekey="btnLogout" runat="server" Text="Odjava" OnClick="btnLogout_Click" />
+                        </li>
+                    </ul>
+                    <% }  %>
                 </div>
             </div>
-        </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </nav>
+        <div>
+            <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
         </div>
-
+        <hr class='mt-4'><div class='text-center'><p>RWA <%: DateTime.Now.Year %> &copy;</p></div>
     </form>
+
+     <!-- JQUERY -->
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 </html>
