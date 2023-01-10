@@ -11,6 +11,13 @@ namespace DAL
         static void Main(string[] args)
         {
             // dal project...
+
+            DbTest1();
+        }
+
+        private static void DbTest1()
+        {
+            
         }
     }
 }
