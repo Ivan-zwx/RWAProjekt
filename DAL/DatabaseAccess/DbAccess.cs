@@ -13,12 +13,12 @@ namespace DAL.DatabaseAccess
     {
         private static string DefaultConnectionString = 
             $"Server={System.Environment.MachineName}; Database=RwaApartmani; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True";
-        /*
-        public IList<Apartment> SelectApartments()
+
+        public static IList<Apartment> LoadApartments()
         {
             IList<Apartment> apartments = new List<Apartment>();
 
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadApartments)).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(DefaultConnectionString, nameof(LoadApartments)).Tables[0];
 
             foreach (DataRow row in tblApartments.Rows)
             {
@@ -43,6 +43,5 @@ namespace DAL.DatabaseAccess
 
             return apartments;
         }
-        */
     }
 }
