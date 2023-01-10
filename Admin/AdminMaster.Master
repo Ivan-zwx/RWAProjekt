@@ -60,7 +60,7 @@
             <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <hr class='mt-4'><div class='text-center'><p>RWA <%: DateTime.Now.Year %> &copy;</p></div>
+        <hr class='mt-4'><div class='text-center'><p>RWA Projekt - Admin</p></div>
     </form>
 
      <!-- JQUERY -->
