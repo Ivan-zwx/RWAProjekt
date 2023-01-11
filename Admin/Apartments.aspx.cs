@@ -74,6 +74,17 @@ namespace Admin
             Response.Redirect("EditApartment.aspx");
         }
 
+        protected void btnUrediTagove_Click(object sender, EventArgs e)
+        {
+            pnlApartments.Visible = false;
+
+            Button btn = (Button)sender;
+            int selectedId = int.Parse(btn.CommandArgument);
+
+            Session["apartment_id"] = selectedId;
+            Response.Redirect("EditApartment.aspx");
+        }
+
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             Response.Redirect("AddApartment.aspx");

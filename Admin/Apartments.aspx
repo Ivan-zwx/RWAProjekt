@@ -45,10 +45,13 @@
                                 <td><%# Eval("BeachDistance") %></td>
                                 <td><%# Eval("Price") %></td>
                                 <td> 
-                                    <asp:Button OnClick="btnUredi_Click" CssClass="btn btn-link" CommandArgument='<%# Eval("Id") %>' Text="Uredi" ID="btnUredi" runat="server" CausesValidation="False"  UseSubmitBehavior="false"/>
+                                    <asp:Button OnClick="btnUredi_Click" CssClass="btn btn-outline-secondary" CommandArgument='<%# Eval("Id") %>' Text="Uredi" ID="btnUredi" runat="server" CausesValidation="False"  UseSubmitBehavior="false"/>
                                 </td>
                                 <td> 
-                                    <asp:Button OnClick="btnDelete_Click" CssClass="btn btn-danger" CommandArgument='<%# Eval("Id") %>' Text="Obrisi" ID="btnDelete" runat="server"/>
+                                    <asp:Button OnClick="btnUrediTagove_Click" CssClass="btn btn-outline-secondary" CommandArgument='<%# Eval("Id") %>' Text="Uredi tagove" ID="btnUrediTagove" runat="server" CausesValidation="False"  UseSubmitBehavior="false"/>
+                                </td>
+                                <td> 
+                                    <asp:Button OnClick="btnDelete_Click" CssClass="btn btn-outline-danger" CommandArgument='<%# Eval("Id") %>' Text="Obrisi" ID="btnDelete" runat="server"/>
                                 </td>
                             </tr>
                         </ItemTemplate>
