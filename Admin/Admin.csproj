@@ -247,12 +247,12 @@
     <Compile Include="AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    <Compile Include="AdminMaster.Mobile.Master.cs">
+      <DependentUpon>AdminMaster.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    <Compile Include="AdminMaster.Mobile.Master.designer.cs">
+      <DependentUpon>AdminMaster.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Tags.aspx.cs">
       <DependentUpon>Tags.aspx</DependentUpon>
@@ -280,7 +280,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Site.Mobile.Master" />
+    <Content Include="AdminMaster.Mobile.Master" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <None Include="Web.Debug.config">
