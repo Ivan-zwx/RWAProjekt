@@ -15,7 +15,7 @@
                     <legend>Popis apartmana</legend>
                     <asp:Repeater runat="server" ID="Repeater">
                         <HeaderTemplate>
-                            <table id="myTable" class="table">
+                            <table id="myTable" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
