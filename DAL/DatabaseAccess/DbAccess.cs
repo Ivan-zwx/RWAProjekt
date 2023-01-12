@@ -3,6 +3,7 @@ using Microsoft.ApplicationBlocks.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,32 @@ namespace DAL.DatabaseAccess
         private static string APARTMENTS_CS =
             $"Server={System.Environment.MachineName}; Database=RwaApartmani; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True";
 
+        /********************************************************************************************************************************************/
+
         public static void SoftDeleteApartment(int id)
         {
             SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(SoftDeleteApartment), id);
         }
+
+        public static int QueryApartmentDeletedStatus(int id)
+        {
+            SqlParameter[] procedureParameters = new SqlParameter[2];
+            procedureParameters[0] = new SqlParameter($"@Id", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Input,
+                Value = id
+            };
+            procedureParameters[1] = new SqlParameter($"@DeletedStatus", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            SqlHelper.ExecuteDataset(APARTMENTS_CS, CommandType.StoredProcedure, nameof(QueryApartmentDeletedStatus), procedureParameters);
+
+            return (int)procedureParameters[1].Value;
+        }
+
+        /********************************************************************************************************************************************/
 
         public static void AddUser(User u)
         {

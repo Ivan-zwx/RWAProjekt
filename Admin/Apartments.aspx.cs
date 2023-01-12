@@ -1,8 +1,10 @@
 ﻿using DAL.DatabaseAccess;
 using DAL.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -95,7 +97,7 @@ namespace Admin
             Button btn = (Button)sender;
             int id = int.Parse(btn.CommandArgument);
 
-            DbAccess.DeleteApartment(id);
+            DbAccess.SoftDeleteApartment(id);
             Response.Redirect("Apartments.aspx");
         }
 
@@ -103,9 +105,14 @@ namespace Admin
         {
             string status = ddlStatusFilter.SelectedItem.Text;
             string city = ddlCityFilter.SelectedItem.Text;
-            _apartments = DbAccess.LoadApartmentsByCityAndStatus(status, city);
+            var allApartments = DbAccess.LoadApartmentsByCityAndStatus(status, city);
+            // gore procedura ne povezuje deletedat na bazi sa deletedat na modelu !!! - zbog toga stvar ne radi
 
-            RemoveDeletedApartments();
+            allApartments.ForEach(x => x.DeletedAt = DbAccess.QueryApartmentDeletedStatus(x.Id).ToString());
+            _apartments = allApartments.Where(x => !x.DeletedAt.Equals("1")).ToList();
+            // sad sve radi - radi i validacija i soft delete apartmana - nema greski!
+
+            //RemoveDeletedApartments();
             Repeater.DataSource = _apartments;
             Repeater.DataBind();
         }
