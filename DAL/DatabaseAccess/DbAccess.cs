@@ -52,7 +52,7 @@ namespace DAL.DatabaseAccess
 
         public static void AddTaggedApartmentById(int apartmentId, string tagName)
         {
-            SqlParameter[] procedureParameters = new SqlParameter[1];
+            SqlParameter[] procedureParameters = new SqlParameter[2];
             procedureParameters[0] = new SqlParameter($"@ApartmentId", SqlDbType.Int)
             { Direction = ParameterDirection.Input,Value = apartmentId };
             procedureParameters[1] = new SqlParameter($"@TagName", SqlDbType.NVarChar)

@@ -97,6 +97,12 @@ namespace Admin
             // na bazu - pobrisi sve tagove apartmana
             // na bazu - dodaj sve odabrane tagove na apartman
 
+            DbAccess.RemoveAllTaggedApartmentsById(selected_apartment_id);
+            foreach (var selectedTag in _selectedtags)
+            {
+                DbAccess.AddTaggedApartmentById(selected_apartment_id, selectedTag.Name);
+            }
+
             _allTags.Clear();
             _selectedtags.Clear();
             Session["apartment_id"] = null;
