@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+    string error = ViewBag.Error;
+}
+
+<div class="=container">
+    <h1>Error page</h1>
+    <div class="alert alert-warning">
+        @error
+    </div>
+    <hr />
+    @Html.ActionLink("Naslovna stranica", controllerName: "Home", actionName: "Index")
+</div>
+

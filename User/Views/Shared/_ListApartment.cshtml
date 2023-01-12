@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DAL.Models.Apartment>
+
+<style>
+    #apartment-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 30px;
+        width: 90%;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+</style>
+
+
+@foreach (var item in Model)
+{
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">@item.Name - @item.City</h5>
+            <p class="card-text">Rooms: @item.TotalRooms</p>
+            <p class="card-text">Adults: @item.MaxAdults</p>
+            <p class="card-text">Children:@item.MaxChildren</p>
+            <p class="card-text" style="font-weight:bold;">@item.Price$</p>
+            @Html.ActionLink("Detalji", "Details", new { @id = item.Id }, new { @class = "btn btn-info" })
+        </div>
+    </div>
+}
+
