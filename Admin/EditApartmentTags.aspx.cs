@@ -93,11 +93,22 @@ namespace Admin
         protected void btnSpremi_Click(object sender, EventArgs e)
         {
             int selected_apartment_id = (int)Session["apartment_id"];
+
+            // na bazu - pobrisi sve tagove apartmana
+            // na bazu - dodaj sve odabrane tagove na apartman
+
+            _allTags.Clear();
+            _selectedtags.Clear();
+            Session["apartment_id"] = null;
+            Response.Redirect("Apartments.aspx");
         }
 
         protected void btnOdustani_Click(object sender, EventArgs e)
         {
-            int selected_apartment_id = (int)Session["apartment_id"];
+            _allTags.Clear();
+            _selectedtags.Clear();
+            Session["apartment_id"] = null;
+            Response.Redirect("Apartments.aspx");
         }
     }
 }
