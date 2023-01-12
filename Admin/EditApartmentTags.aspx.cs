@@ -55,11 +55,39 @@ namespace Admin
         protected void btnAddTag_Click(object sender, EventArgs e)
         {
             // NEED TO IMPLEMENT FUNCTIONALITY (NEW PROCEDURE AND DAL METHOD PROBABLY)
+
+            Tag t = _allTags.FirstOrDefault(x => x.Name == ddlTags.SelectedItem.Text);
+            if (_selectedtags.Add(t))
+            {
+                _allTags.Remove(t);
+            }
+
+            ddlTags.DataSource = _allTags;
+            ddlTags.DataValueField = "Id";
+            ddlTags.DataTextField = "Name";
+            ddlTags.DataBind();
+
+            rptTags.DataSource = _selectedtags;
+            rptTags.DataBind();
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
             // NEED TO IMPLEMENT FUNCTIONALITY (NEW PROCEDURE AND DAL METHOD PROBABLY)
+
+            Button button = sender as Button;
+            string name = button.CommandArgument;
+            Tag t = _selectedtags.FirstOrDefault(x => x.Name == name);
+            _allTags.Add(t);
+            _selectedtags.Remove(t);
+
+            ddlTags.DataSource = _allTags;
+            ddlTags.DataValueField = "Id";
+            ddlTags.DataTextField = "Name";
+            ddlTags.DataBind();
+
+            rptTags.DataSource = _selectedtags;
+            rptTags.DataBind();
         }
     }
 }
