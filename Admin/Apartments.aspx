@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Apartments.aspx.cs" Inherits="Admin.Apartments" %>
+﻿<%@ Page EnableEventValidation="false" Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Apartments.aspx.cs" Inherits="Admin.Apartments" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
@@ -59,7 +59,7 @@
                                 <asp:Button OnClick="btnUrediTagove_Click" CssClass="btn btn-outline-secondary" CommandArgument='<%# Eval("Id") %>' Text="Uredi tagove" ID="btnUrediTagove" runat="server" CausesValidation="False" UseSubmitBehavior="false" />
                             </td>
                             <td>
-                                <asp:Button OnClick="btnDelete_Click" CssClass="btn btn-outline-danger" CommandArgument='<%# Eval("Id") %>' Text="Obrisi" ID="btnDelete" runat="server" />
+                                <asp:Button OnClick="btnDelete_Click" OnClientClick="return confirm('Jeste li sigurni da zelite obrisati apartman?')" CssClass="btn btn-outline-danger" CommandArgument='<%# Eval("Id") %>' Text="Obrisi" ID="btnDelete" runat="server" />
                             </td>
                         </tr>
                     </ItemTemplate>

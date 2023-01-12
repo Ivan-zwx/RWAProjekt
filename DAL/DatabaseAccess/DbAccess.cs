@@ -15,6 +15,11 @@ namespace DAL.DatabaseAccess
         private static string APARTMENTS_CS =
             $"Server={System.Environment.MachineName}; Database=RwaApartmani; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True";
 
+        public static void SoftDeleteApartment(int id)
+        {
+            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(SoftDeleteApartment), id);
+        }
+
         public static void AddUser(User u)
         {
             SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddUser), u.Email, u.UserName, Cryptography.Cryptography.HashPassword(u.PasswordHash), u.PhoneNumber, u.Address);

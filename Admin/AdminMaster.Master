@@ -81,6 +81,11 @@
         $(document).ready( function () {
             $('#myTable').DataTable();
         });
+        /*
+        function confirm() {
+            return confirm("Jeste li sigurni?");
+        }
+        */
     </script>
 </body>
 </html>

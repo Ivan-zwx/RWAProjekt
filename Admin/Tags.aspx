@@ -28,7 +28,7 @@
                         <td><%# Eval("Type") %></td>
 
                         <td>
-                            <asp:LinkButton CssClass="btn btn-outline-danger" Visible='<%#(int)Eval("NumberOfApartments") == 0 %>' CommandArgument='<%# Eval("Id") %>' OnClick="btnDelete_Click" ID="btnDelete" runat="server">Obrisi</asp:LinkButton>
+                            <asp:LinkButton CssClass="btn btn-outline-danger" Visible='<%#(int)Eval("NumberOfApartments") == 0 %>' CommandArgument='<%# Eval("Id") %>' OnClick="btnDelete_Click" OnClientClick="return confirm('Jeste li sigurni da zelite obrisati tag?')" ID="btnDelete" runat="server">Obrisi</asp:LinkButton>
                         </td>
                     </tr>
                 </ItemTemplate>
