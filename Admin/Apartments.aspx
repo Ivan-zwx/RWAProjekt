@@ -4,6 +4,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <asp:Panel runat="server" ID="pnlApartments">
+        <div class="container" style="display: flex; flex-direction: column; width: 25%">
+            <div class="row p-2">
+                <div class="col-md-6">
+                    <asp:Label ID="lblStatusFilter" CssClass="form-label" runat="server" for="ddlStatusFilter" Text="Status"></asp:Label>
+                    <asp:DropDownList AutoPostBack="true" ID="ddlStatusFilter" CssClass="form-select" runat="server"></asp:DropDownList>
+                </div>
+                <div class="col-md-6">
+                    <asp:Label ID="lblCityFilter" CssClass="form-label" runat="server" for="ddlCityFilter" Text="Grad"></asp:Label>
+                    <asp:DropDownList AutoPostBack="true" ID="ddlCityFilter" CssClass="form-select" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <fieldset class="p-4">
                 <legend>Popis apartmana</legend>
@@ -61,12 +73,6 @@
 
                 <asp:Button ID="btnAdd" OnClick="btnAdd_Click" CssClass="btn btn-primary" runat="server" Text="Dodaj" />
             </fieldset>
-        </div>
-        <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; width: 15%">
-            <asp:Label ID="lblStatusFilter" CssClass="form-label" runat="server" for="ddlStatusFilter" Text="Status"></asp:Label>
-            <asp:DropDownList AutoPostBack="true" ID="ddlStatusFilter" CssClass="form-select" runat="server"></asp:DropDownList>
-            <asp:Label ID="lblCityFilter" CssClass="form-label" runat="server" for="ddlCityFilter" Text="Grad"></asp:Label>
-            <asp:DropDownList AutoPostBack="true" ID="ddlCityFilter" CssClass="form-select" runat="server"></asp:DropDownList>
         </div>
     </asp:Panel>
 </asp:Content>
