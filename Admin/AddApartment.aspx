@@ -31,12 +31,12 @@
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtAdults" ErrorMessage="Molim unesite broj odraslih mjesta" />
 
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-6 mb-3">
                 <asp:Label runat="server" CssClass="form-label" Text="Broj dječjih mjesta" for="txtChildren"></asp:Label>
                 <asp:TextBox CssClass="form-control" type="number" ID="txtChildren" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator6" ControlToValidate="txtChildren" ErrorMessage="Molim unesite broj dječjih mjesta" />
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-6 mb-3">
                 <asp:Label runat="server" CssClass="form-label" Text="Cijena apartmana" for="validationDefaultxtPricet02"></asp:Label>
                 <asp:TextBox CssClass="form-control" type="number" ID="txtPrice" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator7" ControlToValidate="txtPrice" ErrorMessage="Molim unesite cijenu apartmana" />
@@ -60,12 +60,15 @@
                 <asp:Label ID="Label2" CssClass="form-label" for="ddlOwner" meta:resourcekey="lblDdlCity" runat="server" Text="Vlasnik"></asp:Label>
                 <asp:DropDownList ID="ddlOwner" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
+            <!--
             <div class="col">
                 <asp:Label ID="lblTags" CssClass="form-label" for="ddlTags" meta:resourcekey="lblDdlTag" runat="server" Text="Oznake"></asp:Label>
                 <asp:DropDownList AutoPostBack="false" ID="ddlTags" CssClass="form-select" runat="server"></asp:DropDownList>
                 <asp:Button Style="margin-top: 10px;" ID="btnAddTag" CssClass="btn btn-primary" OnClick="btnAddTag_Click" runat="server" Text="Dodaj tag" CausesValidation="false" />
             </div>
+            -->
         </div>
+        <!--
         <div class="container p-4">
             <asp:Repeater ID="rptTags" runat="server">
                 <HeaderTemplate>
@@ -98,10 +101,11 @@
                 </FooterTemplate>
             </asp:Repeater>
         </div>
+        -->
         <div class="row p-5">
-            <div class="btn-group" style="width: 50%; align-self: center; margin: 0 auto;">
-                <asp:Button runat="server" Text="Dodaj apartman 1" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-primary" />
-                <asp:Button ID="btnOdustani" OnClick="btnOdustani_Click" CssClass="btn btn-primary " runat="server" Text="Odustani" CausesValidation="False" />
+            <div class="btn-group gap-2" style="width: 50%; align-self: center; margin: 0 auto;">
+                <asp:Button runat="server" Text="Dodaj apartman" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-outline-primary" />
+                <asp:Button ID="btnOdustani" OnClick="btnOdustani_Click" CssClass="btn btn-outline-danger " runat="server" Text="Odustani" CausesValidation="False" />
             </div>
         </div>
     </div>
