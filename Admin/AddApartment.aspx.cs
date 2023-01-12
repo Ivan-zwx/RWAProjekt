@@ -15,8 +15,8 @@ namespace Admin
         private static IList<City> _allCities;
         private static IList<Status> _allStatuses;
         private static IList<Owner> _allOwners;
-        private static IList<Tag> _allTags;
-        private static ISet<Tag> _selectedtags;
+        //private static IList<Tag> _allTags;
+        //private static ISet<Tag> _selectedtags;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,8 +26,8 @@ namespace Admin
             }
             if (!IsPostBack)
             {
-                _allTags = DbAccess.LoadTags();
-                _selectedtags = new HashSet<Tag>();
+                //_allTags = DbAccess.LoadTags();
+                //_selectedtags = new HashSet<Tag>();
                 _allCities = DbAccess.GetCities();
                 _allStatuses = DbAccess.GetStatus();
                 _allOwners = DbAccess.GetOwners();
@@ -38,10 +38,10 @@ namespace Admin
 
         private void AppendData()
         {
-            ddlTags.DataSource = _allTags;
-            ddlTags.DataValueField = "Id";
-            ddlTags.DataTextField = "Name";
-            ddlTags.DataBind();
+            //ddlTags.DataSource = _allTags;
+            //ddlTags.DataValueField = "Id";
+            //ddlTags.DataTextField = "Name";
+            //ddlTags.DataBind();
 
             ddlCity.DataSource = _allCities;
             ddlCity.DataValueField = "Id";
@@ -75,23 +75,24 @@ namespace Admin
                 TotalRooms = int.Parse(txtRoomsCount.Text),
                 BeachDistance = int.Parse(txtBeachDistance.Text)
             });
-            _selectedtags.ToList().ForEach(t => DbAccess.AddTaggedApartment(txtName.Text, t.Name));
-            _selectedtags.Clear();
+            //_selectedtags.ToList().ForEach(t => DbAccess.AddTaggedApartment(txtName.Text, t.Name));
+            //_selectedtags.Clear();
             Response.Redirect("Apartments.aspx");
         }
 
         protected void btnOdustani_Click(object sender, EventArgs e)
         {
-            _selectedtags.Clear();
+            //_selectedtags.Clear();
             _allCities.Clear();
             _allOwners.Clear();
             _allStatuses.Clear();
-            _selectedtags.Clear();
+            //_selectedtags.Clear();
             Response.Redirect("Apartments.aspx");
         }
 
         protected void btnAddTag_Click(object sender, EventArgs e)
         {
+            /*
             Tag t = _allTags.FirstOrDefault(x => x.Name == ddlTags.SelectedItem.Text);
 
             if (_selectedtags.Add(t))
@@ -113,10 +114,12 @@ namespace Admin
 
             rptTags.DataSource = _selectedtags;
             rptTags.DataBind();
+            */
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
+            /*
             LinkButton button = sender as LinkButton;
             string name = button.CommandArgument;
             Tag t = _selectedtags.FirstOrDefault(x => x?.Name == name);
@@ -137,6 +140,7 @@ namespace Admin
 
             rptTags.DataSource = _selectedtags;
             rptTags.DataBind();
+            */
         }
     }
 }
