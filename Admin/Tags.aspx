@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <asp:Repeater ID="rptTags" runat="server">
                     <HeaderTemplate>
                         <table id="myTable" class="table table-striped">
