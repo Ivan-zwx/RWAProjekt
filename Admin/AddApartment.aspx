@@ -104,7 +104,7 @@
         -->
         <div class="row p-5">
             <div class="btn-group gap-2" style="width: 50%; align-self: center; margin: 0 auto;">
-                <asp:Button runat="server" Text="Dodaj apartman" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-outline-primary" />
+                <asp:Button runat="server" Text="Dodaj" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-outline-primary" />
                 <asp:Button ID="btnOdustani" OnClick="btnOdustani_Click" CssClass="btn btn-outline-danger " runat="server" Text="Odustani" CausesValidation="False" />
             </div>
         </div>

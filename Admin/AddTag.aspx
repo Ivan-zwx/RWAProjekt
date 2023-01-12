@@ -18,9 +18,9 @@
                         <asp:label runat="server" CssClass="form-label" for="ddlType" Text="Vrsta oznake"></asp:label>
                         <asp:DropDownList ID="ddlType" CssClass="form-select" runat="server"></asp:DropDownList>
                     </div>
-                <div class="btn-group">
-                    <asp:Button ID="btnAdd" OnClick="btnAdd_Click" CssClass="btn btn-primary" runat="server" Text="Dodaj" />
-                    <asp:Button ID="btnCancel" OnClick="btnCancel_Click" CssClass="btn btn-primary" CausesValidation="false" runat="server" Text="Odustani" />
+                <div class="btn-group gap-2" style="width: 20%; align-self: center; margin: 0 auto; margin-top: 30px">
+                    <asp:Button ID="btnAdd" OnClick="btnAdd_Click" CssClass="btn btn-outline-primary" runat="server" Text="Dodaj" />
+                    <asp:Button ID="btnCancel" OnClick="btnCancel_Click" CssClass="btn btn-outline-danger" CausesValidation="false" runat="server" Text="Odustani" />
                 </div>
             </div>
         </div>
