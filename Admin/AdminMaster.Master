@@ -48,7 +48,7 @@
                             <a class='nav-link' href='/Tags' runat="server" meta:resourcekey="aSettings">Tagovi</a>
                         </li>
                         <li class='nav-item'>
-                            <a class='nav-link' href='/Users' runat="server" meta:resourcekey="aUsers">Registrirani korisnici</a>
+                            <a class='nav-link' href='/Users' runat="server" meta:resourcekey="aUsers">Korisnici</a>
                         </li>
                     </ul>
 
