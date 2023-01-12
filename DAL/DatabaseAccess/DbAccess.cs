@@ -13,14 +13,14 @@ namespace DAL.DatabaseAccess
     public static class DbAccess
     {
         //private static string APARTMENTS_CS = ConfigurationManager.ConnectionStrings["apartments"].ConnectionString;
-        private static string APARTMENTS_CS =
+        private static string ConnectionString =
             $"Server={System.Environment.MachineName}; Database=RwaApartmani; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True";
 
         /********************************************************************************************************************************************/
 
         public static void SoftDeleteApartment(int id)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(SoftDeleteApartment), id);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(SoftDeleteApartment), id);
         }
 
         public static int QueryApartmentDeletedStatus(int id)
@@ -36,7 +36,7 @@ namespace DAL.DatabaseAccess
                 Direction = ParameterDirection.Output
             };
 
-            SqlHelper.ExecuteDataset(APARTMENTS_CS, CommandType.StoredProcedure, nameof(QueryApartmentDeletedStatus), procedureParameters);
+            SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(QueryApartmentDeletedStatus), procedureParameters);
 
             return (int)procedureParameters[1].Value;
         }
@@ -45,13 +45,13 @@ namespace DAL.DatabaseAccess
 
         public static void AddUser(User u)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddUser), u.Email, u.UserName, Cryptography.Cryptography.HashPassword(u.PasswordHash), u.PhoneNumber, u.Address);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(AddUser), u.Email, u.UserName, Cryptography.Cryptography.HashPassword(u.PasswordHash), u.PhoneNumber, u.Address);
         }
         public static IList<User> LoadUsers()
         {
             IList<User> users = new List<User>();
 
-            var tblUsers = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadUsers)).Tables[0];
+            var tblUsers = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadUsers)).Tables[0];
             foreach (DataRow row in tblUsers.Rows)
             {
                 users.Add(
@@ -74,7 +74,7 @@ namespace DAL.DatabaseAccess
 
         public static User AuthUser(string email, string password)
         {
-            var tblAuth = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(AuthUser), email, Cryptography.Cryptography.HashPassword(password)).Tables[0];
+            var tblAuth = SqlHelper.ExecuteDataset(ConnectionString, nameof(AuthUser), email, Cryptography.Cryptography.HashPassword(password)).Tables[0];
             if (tblAuth.Rows.Count == 0) return null;
 
             DataRow row = tblAuth.Rows[0];
@@ -92,11 +92,11 @@ namespace DAL.DatabaseAccess
         }
         public static void DeleteUser(int id)
         {
-            SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(DeleteUser), id);
+            SqlHelper.ExecuteDataset(ConnectionString, nameof(DeleteUser), id);
         }
         public static User AuthUserWithoutHash(string email, string password)
         {
-            var tblAuth = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(AuthUser), email, password).Tables[0];
+            var tblAuth = SqlHelper.ExecuteDataset(ConnectionString, nameof(AuthUser), email, password).Tables[0];
             if (tblAuth.Rows.Count == 0) return null;
 
             DataRow row = tblAuth.Rows[0];
@@ -115,12 +115,12 @@ namespace DAL.DatabaseAccess
 
         public static void SaveUser(User u)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(SaveUser), u.Id, u.Email, u.UserName, u.PasswordHash, u.PhoneNumber, u.Address);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(SaveUser), u.Id, u.Email, u.UserName, u.PasswordHash, u.PhoneNumber, u.Address);
         }
 
         public static Apartment GetApartmentById(int selectedId)
         {
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(GetApartmentById), selectedId).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(GetApartmentById), selectedId).Tables[0];
             var row = tblApartments.Rows[0];
             if (tblApartments != null)
             {
@@ -147,7 +147,7 @@ namespace DAL.DatabaseAccess
         {
             IList<Apartment> apartments = new List<Apartment>();
 
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadApartmentsByTagID), id).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadApartmentsByTagID), id).Tables[0];
             foreach (DataRow row in tblApartments.Rows)
             {
                 apartments.Add(
@@ -175,7 +175,7 @@ namespace DAL.DatabaseAccess
         {
             IList<Apartment> apartments = new List<Apartment>();
 
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadApartments)).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadApartments)).Tables[0];
 
             foreach (DataRow row in tblApartments.Rows)
             {
@@ -202,21 +202,21 @@ namespace DAL.DatabaseAccess
         }
         public static void SaveApartment(Apartment a)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(SaveApartment), a.Id, a.Name, a.NameEng, a.City, a.Owner, a.Status, a.MaxAdults, a.MaxChildren, a.Price, a.BeachDistance, a.TotalRooms, a.Address);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(SaveApartment), a.Id, a.Name, a.NameEng, a.City, a.Owner, a.Status, a.MaxAdults, a.MaxChildren, a.Price, a.BeachDistance, a.TotalRooms, a.Address);
         }
         public static void DeleteApartment(int id)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(DeleteApartment), id);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(DeleteApartment), id);
         }
         public static void AddApartment(Apartment a)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddApartment), a.Name, a.NameEng, a.City, a.Owner, a.Status, a.MaxAdults, a.MaxChildren, a.Price, a.BeachDistance, a.TotalRooms, a.Address);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(AddApartment), a.Name, a.NameEng, a.City, a.Owner, a.Status, a.MaxAdults, a.MaxChildren, a.Price, a.BeachDistance, a.TotalRooms, a.Address);
         }
 
         public static IList<City> GetCities()
         {
             IList<City> cities = new List<City>();
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(GetCities)).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(GetCities)).Tables[0];
 
             foreach (DataRow row in tblApartments.Rows)
             {
@@ -233,7 +233,7 @@ namespace DAL.DatabaseAccess
         public static IList<Owner> GetOwners()
         {
             IList<Owner> owners = new List<Owner>();
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(GetOwners)).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(GetOwners)).Tables[0];
 
             foreach (DataRow row in tblApartments.Rows)
             {
@@ -250,7 +250,7 @@ namespace DAL.DatabaseAccess
         public static IList<Status> GetStatus()
         {
             IList<Status> statuses = new List<Status>();
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(GetStatus)).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(GetStatus)).Tables[0];
 
             foreach (DataRow row in tblApartments.Rows)
             {
@@ -269,7 +269,7 @@ namespace DAL.DatabaseAccess
         {
             IList<Tag> tags = new List<Tag>();
 
-            var tblTags = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadTags)).Tables[0];
+            var tblTags = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadTags)).Tables[0];
             foreach (DataRow row in tblTags.Rows)
             {
                 Tag tag = new Tag
@@ -291,7 +291,7 @@ namespace DAL.DatabaseAccess
         {
             IList<Tag> tags = new List<Tag>();
 
-            var tblTags = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadTagsForApartment), id).Tables[0];
+            var tblTags = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadTagsForApartment), id).Tables[0];
             foreach (DataRow row in tblTags.Rows)
             {
                 Tag tag = new Tag
@@ -311,19 +311,19 @@ namespace DAL.DatabaseAccess
 
         public static void DeleteTag(int tagID)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(DeleteTag), tagID);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(DeleteTag), tagID);
         }
 
         public static void AddTag(Tag t)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddTag), t.Name, t.NameEng, t.Type);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(AddTag), t.Name, t.NameEng, t.Type);
         }
 
         public static IList<TagType> LoadTagTypes()
         {
             IList<TagType> tt = new List<TagType>();
 
-            var tblTagTypes = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadTagTypes)).Tables[0];
+            var tblTagTypes = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadTagTypes)).Tables[0];
             foreach (DataRow row in tblTagTypes.Rows)
             {
                 TagType type = new TagType
@@ -340,19 +340,19 @@ namespace DAL.DatabaseAccess
 
         public static void AddTaggedApartment(string aName, string tName)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddTaggedApartment), aName, tName);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(AddTaggedApartment), aName, tName);
         }
 
         public static void DeleteTaggedApartment(string aName, string tName)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(DeleteTaggedApartment), aName, tName);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(DeleteTaggedApartment), aName, tName);
         }
 
         public static IList<Apartment> LoadApartmentsByCityAndStatus(string status, string city)
         {
             IList<Apartment> apartments = new List<Apartment>();
 
-            var tblApartments = SqlHelper.ExecuteDataset(APARTMENTS_CS, nameof(LoadApartmentsByCityAndStatus), status, city).Tables[0];
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, nameof(LoadApartmentsByCityAndStatus), status, city).Tables[0];
             foreach (DataRow row in tblApartments.Rows)
             {
                 apartments.Add(
@@ -379,12 +379,12 @@ namespace DAL.DatabaseAccess
 
         public static void AddReservationForNonExistingUser(int apartmentId, string details, string username, string email, string phone)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddReservationForNonExistingUser), apartmentId, details, username, email, phone);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(AddReservationForNonExistingUser), apartmentId, details, username, email, phone);
         }
 
         public static void AddReservationForExistingUser(int userId, int apartmentId, string details)
         {
-            SqlHelper.ExecuteNonQuery(APARTMENTS_CS, nameof(AddReservationForExistingUser), userId, apartmentId, details);
+            SqlHelper.ExecuteNonQuery(ConnectionString, nameof(AddReservationForExistingUser), userId, apartmentId, details);
         }
     }
 }
