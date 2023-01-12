@@ -125,6 +125,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="EditApartment.aspx" />
+    <Content Include="EditApartmentTags.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="EditApartment.aspx.designer.cs">
       <DependentUpon>EditApartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditApartmentTags.aspx.cs">
+      <DependentUpon>EditApartmentTags.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditApartmentTags.aspx.designer.cs">
+      <DependentUpon>EditApartmentTags.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
