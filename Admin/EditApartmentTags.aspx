@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
-    <div class="container p-5" style="display: flex; flex-direction: column;">
+    <div class="container p-2" style="display: flex; flex-direction: column;">
         <div class="row p-5">
             <div class="col md-5">
                 <asp:Label runat="server" CssClass="form-label" for="txtName" Text="Naziv apartmana"></asp:Label>
@@ -52,8 +52,8 @@
         </asp:Repeater>
     </div>
 
-    <div class="row p-5">
-        <div class="btn-group gap-2" style="width: 50%; align-self: center; margin: 0 auto;">
+    <div class="row p-2">
+        <div class="btn-group gap-2" style="width: 30%; align-self: center; margin: 0 auto;">
             <asp:Button runat="server" Text="Spremi" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-outline-primary" />
             <asp:Button ID="btnOdustani" OnClick="btnOdustani_Click" CssClass="btn btn-outline-danger " runat="server" Text="Odustani" CausesValidation="False" />
         </div>
