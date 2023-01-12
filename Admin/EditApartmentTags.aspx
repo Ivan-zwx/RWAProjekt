@@ -41,7 +41,7 @@
                     <td><%# Eval("CreatedAt") %></td>
                     <td><%# Eval("Type") %></td>
                     <td>
-                        <asp:Button CommandArgument='<%# Eval("Name") %>' CausesValidation="false" ID="btnRemove" OnClick="btnRemove_Click" CssClass="btn btn-outline-danger" Text="Ukloni" runat="server"/>
+                        <asp:Button CommandArgument='<%# Eval("Name") %>' CausesValidation="false" ID="btnRemove" OnClick="btnRemove_Click" CssClass="btn btn-outline-danger" Text="Ukloni" runat="server" />
                     </td>
                 </tr>
             </ItemTemplate>
@@ -50,6 +50,13 @@
                     </table>
             </FooterTemplate>
         </asp:Repeater>
+    </div>
+
+    <div class="row p-5">
+        <div class="btn-group gap-2" style="width: 50%; align-self: center; margin: 0 auto;">
+            <asp:Button runat="server" Text="Spremi" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-outline-primary" />
+            <asp:Button ID="btnOdustani" OnClick="btnOdustani_Click" CssClass="btn btn-outline-danger " runat="server" Text="Odustani" CausesValidation="False" />
+        </div>
     </div>
 
 </asp:Content>

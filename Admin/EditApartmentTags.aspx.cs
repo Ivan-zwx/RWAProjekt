@@ -89,5 +89,15 @@ namespace Admin
             rptTags.DataSource = _selectedtags;
             rptTags.DataBind();
         }
+
+        protected void btnSpremi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnOdustani_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
