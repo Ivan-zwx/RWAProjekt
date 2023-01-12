@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <asp:Panel runat="server" ID="pnlApartments">
-        <div class="container" style="display: flex; flex-direction: column; width: 25%">
+        <div class="container" style="display: flex; flex-direction: column; width: 35%">
             <div class="row p-2">
                 <div class="col-md-6">
                     <asp:Label ID="lblStatusFilter" CssClass="form-label" runat="server" for="ddlStatusFilter" Text="Status"></asp:Label>
