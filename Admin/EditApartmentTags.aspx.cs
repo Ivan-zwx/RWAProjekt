@@ -92,12 +92,12 @@ namespace Admin
 
         protected void btnSpremi_Click(object sender, EventArgs e)
         {
-
+            int selected_apartment_id = (int)Session["apartment_id"];
         }
 
         protected void btnOdustani_Click(object sender, EventArgs e)
         {
-
+            int selected_apartment_id = (int)Session["apartment_id"];
         }
     }
 }
