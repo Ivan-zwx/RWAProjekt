@@ -33,6 +33,7 @@
                                     <th scope="col">Sobe</th>
                                     <th scope="col">Udaljenost od obale</th>
                                     <th scope="col">Cijena</th>
+                                    <th scope="col">Status</th>
                                     <th hidden="hidden"></th>
                                     <th hidden="hidden"></th>
                                     <th hidden="hidden"></th>
@@ -51,6 +52,7 @@
                             <td><%# Eval("TotalRooms") %></td>
                             <td><%# Eval("BeachDistance") %></td>
                             <td><%# Eval("Price") %></td>
+                            <td><%# Eval("Status") %></td>
                             <td>
                                 <asp:Button OnClick="btnUredi_Click" CssClass="btn btn-outline-secondary" CommandArgument='<%# Eval("Id") %>' Text="Uredi" ID="btnUredi" runat="server" CausesValidation="False" UseSubmitBehavior="false" />
                             </td>
