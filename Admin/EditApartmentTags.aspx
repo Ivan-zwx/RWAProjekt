@@ -1,7 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditApartmentTags.aspx.cs" Inherits="Admin.EditApartmentTags" %>
+﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="EditApartmentTags.aspx.cs" Inherits="Admin.EditApartmentTags" %>
 
 <!DOCTYPE html>
 
+<!--
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -13,3 +14,4 @@
     </form>
 </body>
 </html>
+-->
