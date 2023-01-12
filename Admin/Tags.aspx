@@ -13,9 +13,9 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Naziv</th>
                                     <th scope="col">Kreirano</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Tip</th>
+                                    <th hidden="hidden"></th>
+                                    <th hidden="hidden"></th>
                                 </tr>
                             </thead>
                             <tbody>
