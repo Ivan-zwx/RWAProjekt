@@ -1,0 +1,52 @@
+﻿@model DAL.Models.User
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container p-3">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Full name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Created at")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+    @Html.ActionLink("Uredi", "Edit", "User", new { @o = "" }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Obriši", "Delete", "User", new { @o = "" }, new { @class = "btn btn-danger" })
+</div>

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Login";
+    bool isValid = ViewBag.IsValid;
+}
+
+<div class="container p-3">
+    @using (Html.BeginForm())
+    {
+        <div class="container form-ver">
+            @if (!isValid)
+            {
+                <div class="alert alert-info" role="alert">
+                    @Html.Label("Provjerite upisane podatke!")
+                </div>
+            }
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.Label("email", "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("email", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessage("email", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("password", "Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="password" name="password" class="form-control" />
+                    @Html.ValidationMessage("password", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <div class="col-md-10">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
