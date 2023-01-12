@@ -29,6 +29,7 @@
                                         <th scope="col">Cijena</th>
                                         <th hidden="hidden"></th>
                                         <th hidden="hidden"></th>
+                                        <th hidden="hidden"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,6 +48,7 @@
                                 <td> 
                                     <asp:Button OnClick="btnUredi_Click" CssClass="btn btn-outline-secondary" CommandArgument='<%# Eval("Id") %>' Text="Uredi" ID="btnUredi" runat="server" CausesValidation="False"  UseSubmitBehavior="false"/>
                                 </td>
+                                <!-- -->
                                 <td> 
                                     <asp:Button OnClick="btnUrediTagove_Click" CssClass="btn btn-outline-secondary" CommandArgument='<%# Eval("Id") %>' Text="Uredi tagove" ID="btnUrediTagove" runat="server" CausesValidation="False"  UseSubmitBehavior="false"/>
                                 </td>
