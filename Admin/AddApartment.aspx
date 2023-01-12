@@ -41,7 +41,7 @@
                 <asp:TextBox CssClass="form-control" type="number" ID="txtPrice" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator7" ControlToValidate="txtPrice" ErrorMessage="Molim unesite cijenu apartmana" />
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-6 mb-3">
                 <asp:Label runat="server" CssClass="form-label" Text="Broj soba u apartmanu" for="txtRoomsCount"></asp:Label>
                 <asp:TextBox CssClass="form-control" type="number" ID="txtRoomsCount" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator8" ControlToValidate="txtRoomsCount" ErrorMessage="Molim unesite broj soba u apartmanu" />
