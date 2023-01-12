@@ -30,8 +30,8 @@ namespace Admin
                     _selectedtags = new HashSet<Tag>(DbAccess.LoadTagsForApartment(selected_id));
                     _selectedtags.ToList().ForEach(t => _allTags.Remove(t));
                     AppendData();
-                    //rptTags.DataSource = _selectedtags;
-                    //rptTags.DataBind();
+                    rptTags.DataSource = _selectedtags;
+                    rptTags.DataBind();
                     FillForm(selected_id);
                 }
             }
@@ -55,6 +55,11 @@ namespace Admin
         protected void btnAddTag_Click(object sender, EventArgs e)
         {
  
+        }
+
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
