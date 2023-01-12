@@ -41,7 +41,25 @@ namespace DAL.DatabaseAccess
             return (int)procedureParameters[1].Value;
         }
 
+        public static void RemoveAllTaggedApartmentsById(int apartmentId)
+        {
+            SqlParameter[] procedureParameters = new SqlParameter[1];
+            procedureParameters[0] = new SqlParameter($"@ApartmentId", SqlDbType.Int)
+            { Direction = ParameterDirection.Input, Value = apartmentId };
 
+            SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(RemoveAllTaggedApartmentsById), procedureParameters);
+        }
+
+        public static void AddTaggedApartmentById(int apartmentId, string tagName)
+        {
+            SqlParameter[] procedureParameters = new SqlParameter[1];
+            procedureParameters[0] = new SqlParameter($"@ApartmentId", SqlDbType.Int)
+            { Direction = ParameterDirection.Input,Value = apartmentId };
+            procedureParameters[1] = new SqlParameter($"@TagName", SqlDbType.NVarChar)
+            { Direction = ParameterDirection.Input, Value = tagName };
+
+            SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(AddTaggedApartmentById), procedureParameters);
+        }
 
         /********************************************************************************************************************************************/
 
