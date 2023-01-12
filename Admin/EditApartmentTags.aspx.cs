@@ -54,12 +54,12 @@ namespace Admin
 
         protected void btnAddTag_Click(object sender, EventArgs e)
         {
- 
+            // NEED TO IMPLEMENT FUNCTIONALITY (NEW PROCEDURE AND DAL METHOD PROBABLY)
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
-
+            // NEED TO IMPLEMENT FUNCTIONALITY (NEW PROCEDURE AND DAL METHOD PROBABLY)
         }
     }
 }
