@@ -31,7 +31,7 @@
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtAdults" ErrorMessage="Molim unesite broj odraslih mjesta" />
 
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <asp:Label runat="server" CssClass="form-label" Text="Broj dječjih mjesta" for="txtChildren"></asp:Label>
                 <asp:TextBox CssClass="form-control" type="number" ID="txtChildren" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator Style="color: red;" runat="server" ID="RequiredFieldValidator6" ControlToValidate="txtChildren" ErrorMessage="Molim unesite broj dječjih mjesta" />
