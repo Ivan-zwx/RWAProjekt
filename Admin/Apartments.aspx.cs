@@ -82,7 +82,7 @@ namespace Admin
             int selectedId = int.Parse(btn.CommandArgument);
 
             Session["apartment_id"] = selectedId;
-            Response.Redirect("EditApartment.aspx");
+            Response.Redirect("EditApartmentTags.aspx");
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
