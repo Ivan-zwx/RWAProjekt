@@ -126,7 +126,8 @@ namespace User.Controllers
         {
             apartments.ToList().ForEach(a =>
             {
-                if (a.DeletedAt != "" || a.Status != "Slobodno" || a.City != city || a.MaxAdults != adults || a.MaxChildren != children || a.TotalRooms != rooms)
+                // promijenio filtriranje da trazi manje od unesenog, ne jednako unesenom
+                if (a.DeletedAt != "" || a.Status != "Slobodno" || a.City != city || a.MaxAdults < adults || a.MaxChildren < children || a.TotalRooms < rooms)
                 {
                     apartments.Remove(a);
                 }
