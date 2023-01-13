@@ -118,7 +118,7 @@
 }
 
 <script>
-    (function () {
+    function LoadPictures() {
         const cards = document.querySelectorAll('.card');
         const url = 'https://api.unsplash.com/search/photos/?query=apartment&per_page=' + cards.length + '&client_id=V0_1cwILTK1vIwp95YaUZDeNnvCqUooDWKhuAtrsaVc';
         for (let i = 0; i < cards.length; i++) {
@@ -135,5 +135,9 @@
                     cards[i].insertBefore(image, cards[i].firstChild);
                 })
         }
+    };
+
+    (function () {
+        LoadPictures();
     }());
 </script>
