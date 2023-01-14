@@ -1,4 +1,6 @@
-﻿using DAL.Models;
+﻿using Antlr.Runtime.Tree;
+using DAL.DatabaseAccess;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,8 @@ namespace User.Controllers
             {
                 // load apartments that the user has reserved in the past from the database
                 // note: submit button on form should be disabled if user has no reservations or none are selected
-                List<Apartment> reservedApartments = new List<Apartment>();
+                var user = (DAL.Models.User)Session["user"];
+                List<Apartment> reservedApartments = DbAccess.QueryReservedApartmentsForUser(user.Id).ToList();
                 return View(reservedApartments);
             }
             else
