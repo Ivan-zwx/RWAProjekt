@@ -98,7 +98,7 @@ namespace User.Controllers
             {
                 return Json("Neuspješna rezervacija");
             }
-            return Content("Rezervacija je proslije?ena administratoru");
+            return Content("Rezervacija je proslijedena administratoru");
         }
 
         [HttpPost]
@@ -112,7 +112,7 @@ namespace User.Controllers
             {
                 return Json("Neuspješna rezervacija");
             }
-            return Json("Rezervacija je proslije?ena administratoru");
+            return Json("Rezervacija je proslijedena administratoru");
         }
 
         /*

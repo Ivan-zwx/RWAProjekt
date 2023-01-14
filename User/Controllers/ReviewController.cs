@@ -13,5 +13,10 @@ namespace User.Controllers
         {
             return View();
         }
+
+        public ActionResult SubmitReview()
+        {
+
+        }
     }
 }
