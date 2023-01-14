@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,10 @@ namespace User.Controllers
         {
             if (Session["user"] != null)
             {
-                return View();
+                // load apartments that the user has reserved in the past from the database
+                // note: submit button on form should be disabled if user has no reservations or none are selected
+                List<Apartment> reservedApartments = null;
+                return View(reservedApartments);
             }
             else
             {
