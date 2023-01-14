@@ -24,14 +24,15 @@
             </div>
             <ul>
                 <li>@Model.Address</li>
-                <li>Beach distance: @Model.BeachDistance</li>
-                <li>Rooms: @Model.TotalRooms</li>
-                <li>Adults: @Model.MaxAdults</li>
-                <li>Children: @Model.MaxChildren</li>
-                <li>Owner: @Model.Owner</li>
+                <li>Udaljenost od obale: @Model.BeachDistance</li>
+                <li>Sobe: @Model.TotalRooms</li>
+                <li>Odrasli: @Model.MaxAdults</li>
+                <li>Djeca: @Model.MaxChildren</li>
+                <li>Vlasnik: @Model.Owner</li>
             </ul>
         </div>
-        <p style="font-weight:bold; margin: 30px 10px;">@Model.Price$</p>
+        <p style="font-weight:bold; margin: 30px 10px;">@Math.Round(Model.Price, 2)$</p>
+        <p>Oprema:</p>
         <ul style="display:flex; flex-direction: column; flex-wrap:wrap; max-height: 200px;">
             @foreach (DAL.Models.Tag tag in tags)
             {
@@ -46,7 +47,7 @@
             <div style="width: 50%;">
                 @Html.AntiForgeryToken()
                 <div class="form-group">
-                    @Html.Label("username", "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("username", "Ime", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="username" id="username" value=@username />
                     </div>
@@ -60,33 +61,33 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.Label("phone", "Phone/mobile", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("phone", "Telefon", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="phone" id="phone" value=@phone />
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:row;">
                     <div style="width:40%;">
-                        @Html.Label("adults", "Adults", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.Label("adults", "Odrasli", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <input type="number" class="form-control" id="adults" value="2" />
                         </div>
                     </div>
                     <div style="width:40%;">
-                        @Html.Label("children", "Children", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.Label("children", "Djeca", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <input type="number" class="form-control" id="children" value="0" />
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("dateFrom", "From", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("dateFrom", "Od", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <input type="date" class="form-control" id="dateFrom" />
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("dateTo", "To", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("dateTo", "Do", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <input type="date" class="form-control" id="dateTo" />
                     </div>
@@ -94,7 +95,7 @@
 
                 <div class="form-group mt-2">
                     <div class="col-md-10">
-                        <input type="submit" id='btnBook' value="Book" class="btn btn-primary" />
+                        <input type="submit" id='btnBook' value="Rezerviraj" class="btn btn-primary" />
                     </div>
                 </div>
             </div>

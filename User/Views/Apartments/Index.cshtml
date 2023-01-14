@@ -13,7 +13,7 @@
 <div class="w-100" style="padding: 0 20px; margin-bottom: 40px; display:flex; flex-direction:row;">
     <div class="w-25">
         <div class="form-group">
-            @Html.Label("cities", "City", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("cities", "Grad", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select class="form-select" name="cities" id="cities">
                     @foreach (DAL.Models.City c in cities)
@@ -31,19 +31,19 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("rooms", "Rooms", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("rooms", "Sobe", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Editor("rooms", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = rooms.ToString() } })
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("adults", "Adults", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("adults", "Odrasli", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Editor("adults", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = adults.ToString() } })
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("children", "Children", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("children", "Djeca", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Editor("children", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = children.ToString() } })
             </div>

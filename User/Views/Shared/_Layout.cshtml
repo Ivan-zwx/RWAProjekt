@@ -39,26 +39,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        @Html.ActionLink("Search", "Index", "Apartments", new { @o = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Apartmani", "Index", "Apartments", new { @o = "" }, new { @class = "nav-link" })
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     @if (Session["user"] == null)
                     {
                         <li class="nav-item">
-                            @Html.ActionLink("Login", "Login", "User", new { @o = "" }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Prijava", "Login", "User", new { @o = "" }, new { @class = "btn btn-primary" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Register", "Create", "User", new { @o = "" }, new { @class = "btn btn-default" })
+                            @Html.ActionLink("Registracija", "Create", "User", new { @o = "" }, new { @class = "btn btn-default" })
                         </li>
                     }
                     else
                     {
                         <li class="nav-item">
-                            @Html.ActionLink("Profile", "Index", "User", new { @o = "" }, new { @class = "nav-link" })
+                            @Html.ActionLink("Profil", "Index", "User", new { @o = "" }, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Logout", "Logout", "User", new { @o = "" }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Odjava", "Logout", "User", new { @o = "" }, new { @class = "btn btn-danger" })
                         </li>
                     }
                     <!--
