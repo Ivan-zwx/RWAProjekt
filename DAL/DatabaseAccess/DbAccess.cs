@@ -18,6 +18,43 @@ namespace DAL.DatabaseAccess
 
         /********************************************************************************************************************************************/
 
+        public static IList<Apartment> QueryReservedApartmentsForUser(int userId)
+        {
+            SqlParameter[] procedureParameters = new SqlParameter[1];
+            procedureParameters[0] = new SqlParameter($"@UserId", SqlDbType.Int)
+            { Direction = ParameterDirection.Input, Value = userId };
+
+            var tblApartments = SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(QueryReservedApartmentsForUser), procedureParameters).Tables[0];
+
+            IList<Apartment> apartments = new List<Apartment>();
+            foreach (DataRow row in tblApartments.Rows)
+            {
+                apartments.Add(new Apartment
+                {
+                    Id = (int)row[nameof(Apartment.Id)],
+                    Name = row[nameof(Apartment.Name)].ToString()
+                });
+            }
+            return apartments;
+        }
+
+        public static void CreateApartmentReviewForUser(int userId, int apartmentId, string details, int stars)
+        {
+            SqlParameter[] procedureParameters = new SqlParameter[4];
+            procedureParameters[0] = new SqlParameter($"@UserId", SqlDbType.Int)
+            { Direction = ParameterDirection.Input, Value = userId };
+            procedureParameters[1] = new SqlParameter($"@ApartmentId", SqlDbType.Int)
+            { Direction = ParameterDirection.Input, Value = apartmentId };
+            procedureParameters[2] = new SqlParameter($"@Details", SqlDbType.NVarChar)
+            { Direction = ParameterDirection.Input, Value = details };
+            procedureParameters[3] = new SqlParameter($"@Stars", SqlDbType.Int)
+            { Direction = ParameterDirection.Input, Value = stars };
+
+            SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(CreateApartmentReviewForUser), procedureParameters);
+        }
+
+        /********************************************************************************************************************************************/
+
         public static void SoftDeleteApartment(int id)
         {
             SqlHelper.ExecuteNonQuery(ConnectionString, nameof(SoftDeleteApartment), id);
