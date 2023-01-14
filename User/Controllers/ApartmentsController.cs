@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using User.Utilities;
 
 namespace User.Controllers
 {
@@ -66,22 +67,22 @@ namespace User.Controllers
 
             FilterApartments(apartments, city, adults, children, rooms, sort);
 
-            SetOrCreateCookie("city", city);
-            SetOrCreateCookie("adults", adults.ToString());
-            SetOrCreateCookie("children", children.ToString());
-            SetOrCreateCookie("rooms", rooms.ToString());
-            SetOrCreateCookie("sort", sort.ToString());
+            this.SetOrCreateCookie("city", city);
+            this.SetOrCreateCookie("adults", adults.ToString());
+            this.SetOrCreateCookie("children", children.ToString());
+            this.SetOrCreateCookie("rooms", rooms.ToString());
+            this.SetOrCreateCookie("sort", sort.ToString());
 
             return PartialView("_ListApartment", apartments);
         }
 
         public ActionResult Reset()
         {
-            DeleteCookie("city");
-            DeleteCookie("adults");
-            DeleteCookie("children");
-            DeleteCookie("rooms");
-            DeleteCookie("sort");
+            this.DeleteCookie("city");
+            this.DeleteCookie("adults");
+            this.DeleteCookie("children");
+            this.DeleteCookie("rooms");
+            this.DeleteCookie("sort");
 
             return RedirectToAction("Index");
         }
@@ -114,6 +115,7 @@ namespace User.Controllers
             return Json("Rezervacija je proslije?ena administratoru");
         }
 
+        /*
         private void DeleteCookie(string name)
         {
             if (Request.Cookies[name] != null)
@@ -121,6 +123,7 @@ namespace User.Controllers
                 Response.Cookies[name].Expires = DateTime.Now.AddDays(-1);
             }
         }
+        */
 
         private void FilterApartments(List<Apartment> apartments, string city, int adults, int children, int rooms, int sort)
         {
@@ -151,6 +154,7 @@ namespace User.Controllers
             ViewBag.Sort = sort;
         }
 
+        /*
         private void SetOrCreateCookie(string name, string value)
         {
             if (Request.Cookies[name] != null)
@@ -162,7 +166,9 @@ namespace User.Controllers
                 CreateCookie(name, value);
             }
         }
+        */
 
+        /*
         private void CreateCookie(string name, string value)
         {
             HttpCookie cookie = new HttpCookie(name);
@@ -170,6 +176,7 @@ namespace User.Controllers
             cookie.Expires = DateTime.Now.AddDays(1);
             Response.SetCookie(cookie);
         }
+        */
 
         private void SetDefaultViewBag()
         {
