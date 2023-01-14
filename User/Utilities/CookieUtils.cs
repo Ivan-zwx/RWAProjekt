@@ -8,6 +8,8 @@ namespace User.Utilities
 {
     public static class CookieUtils
     {
+        // all cookies in this utility use a one day expiration period
+
         public static void SetOrCreateCookie(this Controller controller, string name, string value)
         {
             if (controller.Request.Cookies[name] != null)
