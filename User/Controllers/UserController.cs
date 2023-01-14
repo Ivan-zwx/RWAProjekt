@@ -138,7 +138,7 @@ namespace User.Controllers
             }
             catch
             {
-                return RedirectToAction("Index", "Error", new { @error = "Nije mogu?e izbrisati korisnika" });
+                return RedirectToAction("Index", "Error", new { @error = "Nije moguce izbrisati korisnika" });
             }
         }
     }
