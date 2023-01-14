@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DAL.Models.Apartment>
+
+@{
+    ViewBag.Title = "Review";
+}
+
+<div class="row">
+    <form id="contact-form" style="" class="col-md-8 offset-md-2">
+        <fieldset>
+            <legend>Recenzija</legend>
+            <div style="width: 50%;">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.Label("username", "Ime", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="username" id="username" value="" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("email", "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="email" class="form-control" name="email" id="email" value="" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("phone", "Telefon", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="phone" id="phone" value="" />
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:row;">
+                    <div style="width:40%;">
+                        @Html.Label("adults", "Odrasli", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" id="adults" value="" />
+                        </div>
+                    </div>
+                    <div style="width:40%;">
+                        @Html.Label("children", "Djeca", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" id="children" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("dateFrom", "Od", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="dateFrom" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("dateTo", "Do", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="dateTo" />
+                    </div>
+                </div>
+
+                <div class="form-group mt-2">
+                    <div class="col-md-10">
+                        <input type="submit" id='btnBook' value="Rezerviraj" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

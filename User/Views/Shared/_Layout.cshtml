@@ -41,6 +41,12 @@
                     <li class="nav-item">
                         @Html.ActionLink("Apartmani", "Index", "Apartments", new { @o = "" }, new { @class = "nav-link" })
                     </li>
+                    @if (Session["user"] != null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Recenzije", "Index", "Review", new { @o = "" }, new { @class = "nav-link" })
+                        </li>
+                    }
                 </ul>
                 <ul class="navbar-nav">
                     @if (Session["user"] == null)

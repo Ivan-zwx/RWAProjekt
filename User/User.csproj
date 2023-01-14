@@ -204,7 +204,7 @@
     <Content Include="Views\Apartments\Details.cshtml" />
     <Content Include="Views\Shared\_ListApartment.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Review\Review.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
