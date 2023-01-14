@@ -19,6 +19,7 @@ namespace User.Controllers
                 // load apartments that the user has reserved in the past from the database
                 // note: submit button on form should be disabled if user has no reservations or none are selected
                 var user = (DAL.Models.User)Session["user"];
+                ViewBag.User = user;
                 List<Apartment> reservedApartments = DbAccess.QueryReservedApartmentsForUser(user.Id).ToList();
                 return View(reservedApartments);
             }
