@@ -11,7 +11,14 @@ namespace User.Controllers
         // GET: Review
         public ActionResult Index()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Apartments");
+            }
         }
 
         [HttpPost]
