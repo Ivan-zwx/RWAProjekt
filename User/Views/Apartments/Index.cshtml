@@ -55,27 +55,27 @@
     </div>
     <div class="w-25">
         <div class="form-group">
-            @Html.Label("sort", "Sort", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("sort", "Sortiranje", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select class="form-select" name="sort" id="sort">
                     @switch (ViewBag.Sort)
                     {
                         case 1:
-                            <option value="0">--Select--</option>
-                            <option value="1" selected>Ascending</option>
-                            <option value="2">Descending</option>
+                            <option value="0">Nema</option>
+                            <option value="1" selected>Uzlazno</option>
+                            <option value="2">Silazno</option>
                             break;
 
                         case 2:
-                            <option value="0">--Select--</option>
-                            <option value="1">Ascending</option>
-                            <option value="2" selected>Descending</option>
+                            <option value="0">Nema</option>
+                            <option value="1">Uzlazno</option>
+                            <option value="2" selected>Silazno</option>
                             break;
 
                         default:
-                            <option value="0" selected>--Select--</option>
-                            <option value="1">Ascending</option>
-                            <option value="2">Descending</option>
+                            <option value="0" selected>Nema</option>
+                            <option value="1">Uzlazno</option>
+                            <option value="2">Silazno</option>
                             break;
                     }
                 </select>
