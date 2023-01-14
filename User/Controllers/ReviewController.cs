@@ -16,7 +16,7 @@ namespace User.Controllers
             {
                 // load apartments that the user has reserved in the past from the database
                 // note: submit button on form should be disabled if user has no reservations or none are selected
-                List<Apartment> reservedApartments = null;
+                List<Apartment> reservedApartments = new List<Apartment>();
                 return View(reservedApartments);
             }
             else
