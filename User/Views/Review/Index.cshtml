@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Review";
     DAL.Models.User user = ViewBag.User;
-    int userId = user.Id;
+    int userId;
+    userId = user.Id;
 }
 
 <div class="row">
@@ -35,10 +36,15 @@
                 </div>
                 <div class="form-group mt-2">
                     <div class="col-md-10">
-                        <input type="submit" id='btnBook' value="Posalji" class="btn btn-primary" style="margin-top:2rem"/>
+                        <input type="submit" id='btnSubmit' value="Posalji" class="btn btn-primary" style="margin-top:2rem" />
                     </div>
                 </div>
             </div>
         </fieldset>
     </form>
 </div>
+
+
+@section jquery{
+    
+}
