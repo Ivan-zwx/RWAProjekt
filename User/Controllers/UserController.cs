@@ -23,22 +23,6 @@ namespace User.Controllers
             return View((DAL.Models.User)Session["user"]);
         }
 
-        public ActionResult Logout()
-        {
-            if (Request.Cookies["user_email"] != null)
-            {
-                Response.Cookies["user_email"].Expires = DateTime.Now.AddDays(-1);
-            }
-            if (Request.Cookies["user_pass"] != null)
-            {
-                Response.Cookies["user_pass"].Expires = DateTime.Now.AddDays(-1);
-            }
-            Session.RemoveAll();
-            Session.Abandon();
-
-            return RedirectToAction("Index", "Apartments");
-        }
-
         // GET: User/Login
         [HttpGet]
         public ActionResult Login()
@@ -71,6 +55,22 @@ namespace User.Controllers
 
             Response.SetCookie(cookie_email);
             Response.SetCookie(cookie_pass);
+
+            return RedirectToAction("Index", "Apartments");
+        }
+
+        public ActionResult Logout()
+        {
+            if (Request.Cookies["user_email"] != null)
+            {
+                Response.Cookies["user_email"].Expires = DateTime.Now.AddDays(-1);
+            }
+            if (Request.Cookies["user_pass"] != null)
+            {
+                Response.Cookies["user_pass"].Expires = DateTime.Now.AddDays(-1);
+            }
+            Session.RemoveAll();
+            Session.Abandon();
 
             return RedirectToAction("Index", "Apartments");
         }
