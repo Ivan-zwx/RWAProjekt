@@ -9,6 +9,7 @@ namespace User.Utilities
     public static class CookieUtils
     {
         // all cookies in this utility use a one day expiration period
+        private static readonly double cookieExpiration = 1.0;
 
         public static void SetOrCreateCookie(this Controller controller, string name, string value)
         {
@@ -26,7 +27,7 @@ namespace User.Utilities
         {
             HttpCookie cookie = new HttpCookie(name);
             cookie.Value = value;
-            cookie.Expires = DateTime.Now.AddDays(1);
+            cookie.Expires = DateTime.Now.AddDays(cookieExpiration);
             controller.Response.SetCookie(cookie);
         }
 
@@ -34,7 +35,7 @@ namespace User.Utilities
         {
             if (controller.Request.Cookies[name] != null)
             {
-                controller.Response.Cookies[name].Expires = DateTime.Now.AddDays(-1);
+                controller.Response.Cookies[name].Expires = DateTime.Now.AddDays(-cookieExpiration);
             }
         }
     }

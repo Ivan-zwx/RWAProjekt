@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using User.Utilities;
 
 namespace User.Controllers
 {
@@ -45,6 +46,7 @@ namespace User.Controllers
             ViewBag.IsAuthorized = true;
             Session["user"] = u;
 
+            /*
             HttpCookie cookie_email = new HttpCookie("user_email");
             cookie_email.Value = u.Email;
             cookie_email.Expires = DateTime.Now.AddDays(1);
@@ -55,12 +57,17 @@ namespace User.Controllers
 
             Response.SetCookie(cookie_email);
             Response.SetCookie(cookie_pass);
+            */
+
+            this.CreateCookie("user_email", u.Email);
+            this.CreateCookie("user_pass", u.PasswordHash);
 
             return RedirectToAction("Index", "Apartments");
         }
 
         public ActionResult Logout()
         {
+            /*
             if (Request.Cookies["user_email"] != null)
             {
                 Response.Cookies["user_email"].Expires = DateTime.Now.AddDays(-1);
@@ -69,6 +76,10 @@ namespace User.Controllers
             {
                 Response.Cookies["user_pass"].Expires = DateTime.Now.AddDays(-1);
             }
+            */
+
+            this.DeleteCookie("user_email");
+            this.DeleteCookie("user_pass");
             Session.RemoveAll();
             Session.Abandon();
 
