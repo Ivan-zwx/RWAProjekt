@@ -14,9 +14,18 @@ namespace User.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult SubmitReview()
         {
+            try
+            {
 
+            }
+            catch (Exception)
+            {
+                return Json("Slanje recenzije nije uspjelo");
+            }
+            return Json("Recenzija je poslana");
         }
     }
 }
