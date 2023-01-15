@@ -23,7 +23,7 @@ namespace User.Controllers
             {
                 // load apartments that the user has reserved in the past from the database
                 // note: submit button on form should be disabled if user has no reservations or none are selected
-                var reservedApartments = queryReserverApartments();
+                var reservedApartments = QueryReservedApartments();
                 return View(reservedApartments);
             }
             else
@@ -35,9 +35,10 @@ namespace User.Controllers
         [HttpPost]
         public ActionResult SubmitReview(int userId, string apartmentName, int stars, string details)
         {
+            // postoji nekakvo bolje selection model rjesenje (u view-u)?
             try
             {
-                var reservedApartments = queryReserverApartments();
+                var reservedApartments = QueryReservedApartments();
                 if (reservedApartments != null && reservedApartments.Count() != 0)
                 {
                     int apartmentId = reservedApartments.Where(x => x.Name == apartmentName).FirstOrDefault().Id;
@@ -51,7 +52,7 @@ namespace User.Controllers
             return Json("Recenzija je uspjesno poslana");
         }
 
-        private List<Apartment> queryReserverApartments()
+        private List<Apartment> QueryReservedApartments()
         {
             var user = (DAL.Models.User)Session["user"];
             ViewBag.User = user;
