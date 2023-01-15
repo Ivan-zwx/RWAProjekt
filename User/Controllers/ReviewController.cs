@@ -40,6 +40,7 @@ namespace User.Controllers
                 if (reservedApartments != null && reservedApartments.Count() != 0)
                 {
                     int apartmentId = reservedApartments.Where(x => x.Name == apartmentName).FirstOrDefault().Id;
+                    DbAccess.CreateApartmentReviewForUser(userId, apartmentId, details, stars);
                 }
             }
             catch (Exception)
