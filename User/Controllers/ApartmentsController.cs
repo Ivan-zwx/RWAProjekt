@@ -55,9 +55,20 @@ namespace User.Controllers
 
         public ActionResult Details(int id)
         {
-            Apartment a = DbAccess.GetApartmentById(id);
-            ViewBag.Tags = DbAccess.LoadTagsForApartment(id);
-            return View(a);
+            if (id == 0)
+            {
+                return RedirectToAction("Index", "Apartments");
+            }
+            try
+            {
+                Apartment a = DbAccess.GetApartmentById(id);
+                ViewBag.Tags = DbAccess.LoadTagsForApartment(id);
+                return View(a);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Apartments");
+            }
         }
 
         [HttpPost]
