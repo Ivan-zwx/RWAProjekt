@@ -3,16 +3,15 @@
 @{
     ViewBag.Title = "Review";
     DAL.Models.User user = ViewBag.User;
-    int userId;
-    userId = user.Id;
+    int defaultStars = 0;
 }
 
 <div class="row">
-    <form id="contact-form" style="" class="col-md-8 offset-md-2">
+    <form id="review-form" style="" class="col-md-8 offset-md-2">
         <div class="form-group" style="margin-top:2rem; margin-bottom:2rem">
             @Html.Label("apartments", "Apartman", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-select" name="cities" id="cities">
+                <select class="form-select" name="apartments" id="apartmentselection">
                     <option selected>Odaberite apartman</option>
                     @if (Model != null && Model.Count() != 0)
                     {
@@ -31,12 +30,12 @@
                 <div class="form-group">
                     @Html.Label("review-content-label", "Opisite svoje iskustvo", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <textarea class="form-control" style="resize:none" maxlength="800" name="review-content" id="review-content" cols="40" rows="8" value=""></textarea>
+                        <textarea class="form-control" style="resize:none" maxlength="800" name="reviewcontent" id="reviewcontent" cols="40" rows="8" value=""></textarea>
                     </div>
                 </div>
                 <div class="form-group mt-2">
                     <div class="col-md-10">
-                        <input type="submit" id='btnSubmit' value="Posalji" class="btn btn-primary" style="margin-top:2rem" />
+                        <input type="submit" id='btnSubmit' onclick="SubmitReview()" value="Posalji" class="btn btn-primary" style="margin-top:2rem" />
                     </div>
                 </div>
             </div>
@@ -46,5 +45,40 @@
 
 
 @section jquery{
-    
+    <script>
+        function SubmitReview() {
+
+            let apartmentSelection = document.getElementById("apartmentselection");
+            var selectedApartment = apartmentSelection.options[apartmentSelection.selectedIndex].value;
+            if (selectedApartment == "Odaberite apartman") {
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("SubmitReview", "Review")',
+                data: JSON.stringify({
+                    'userId': @user.Id,
+                    'apartmentName': selectedApartment.toString(),
+                    'stars' : @defaultStars,
+                    'details': reviewcontent.toString()
+                }),
+                type: "POST",
+                dataType: 'html',
+                contentType: "application/json; charset=utf-8",
+                processData: false,
+                success: x => {
+                    $('#alert-text').text(x)
+                    $('#alert').css('display', "block");
+                },
+                error: e => {
+                    $('#alert-text').text(e);
+                    $('#alert').css('display', "block");
+                }
+            });
+
+        };
+    </script>
+    <script>
+        
+    </script>
 }

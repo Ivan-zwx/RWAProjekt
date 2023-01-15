@@ -4,6 +4,7 @@ using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,6 +12,8 @@ namespace User.Controllers
 {
     public class ReviewController : Controller
     {
+        List<Apartment> reservedApartments;
+
         // GET: Review
         public ActionResult Index()
         {
@@ -20,7 +23,7 @@ namespace User.Controllers
                 // note: submit button on form should be disabled if user has no reservations or none are selected
                 var user = (DAL.Models.User)Session["user"];
                 ViewBag.User = user;
-                List<Apartment> reservedApartments = DbAccess.QueryReservedApartmentsForUser(user.Id).ToList();
+                reservedApartments = DbAccess.QueryReservedApartmentsForUser(user.Id).ToList();
                 return View(reservedApartments);
             }
             else
@@ -30,11 +33,14 @@ namespace User.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitReview()
+        public ActionResult SubmitReview(int userId, string apartmentName, string details, int stars)
         {
             try
             {
-
+                if (reservedApartments != null && reservedApartments.Count() != 0)
+                {
+                    int apartmentId = reservedApartments.Where(x => x.Name == apartmentName).FirstOrDefault().Id;
+                }
             }
             catch (Exception)
             {
