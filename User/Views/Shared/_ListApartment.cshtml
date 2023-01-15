@@ -24,7 +24,7 @@
             <h5 class="card-title">@item.Name - @item.City</h5>
             <p class="card-text">Sobe: @item.TotalRooms</p>
             <p class="card-text">Odrasli: @item.MaxAdults</p>
-            <p class="card-text">Djeca:@item.MaxChildren</p>
+            <p class="card-text">Djeca: @item.MaxChildren</p>
             <p class="card-text" style="font-weight:bold;">@Math.Round(item.Price, 2)$</p>
             @Html.ActionLink("Detalji", "Details", new { @id = item.Id }, new { @class = "btn btn-info" })
         </div>
