@@ -12,11 +12,8 @@ namespace DAL.DatabaseAccess
 {
     public static class DbAccess
     {
-        //private static string APARTMENTS_CS = ConfigurationManager.ConnectionStrings["apartments"].ConnectionString;
         private static string ConnectionString =
             $"Server={System.Environment.MachineName}; Database=RwaApartmani; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True";
-
-        /********************************************************************************************************************************************/
 
         public static IList<Apartment> QueryReservedApartmentsForUser(int userId)
         {
@@ -52,8 +49,6 @@ namespace DAL.DatabaseAccess
 
             SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(CreateApartmentReviewForUser), procedureParameters);
         }
-
-        /********************************************************************************************************************************************/
 
         public static void SoftDeleteApartment(int id)
         {
@@ -97,8 +92,6 @@ namespace DAL.DatabaseAccess
 
             SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(AddTaggedApartmentById), procedureParameters);
         }
-
-        /********************************************************************************************************************************************/
 
         public static void AddUser(User u)
         {

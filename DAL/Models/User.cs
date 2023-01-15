@@ -12,21 +12,21 @@ namespace DAL.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter an email")]
+        [Required(ErrorMessage = "Unesite email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter a username")]
+        [Required(ErrorMessage = "Unesite korisnicko ime")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Please enter a password")]
+        [Required(ErrorMessage = "Unesite lozinku")]
         public string PasswordHash { get; set; }
         public string CreatedAt { get; set; }
         public string DeletedAt { get; set; }
 
-        [Required(ErrorMessage = "Please enter a phone number")]
+        [Required(ErrorMessage = "Unesite broj telefona")]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Please enter an address")]
+        [Required(ErrorMessage = "Unesite email adresu")]
         public string Address { get; set; }
     }
 }
