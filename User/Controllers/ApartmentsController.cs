@@ -53,16 +53,16 @@ namespace User.Controllers
             return View(apartments);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(Nullable<int> id)
         {
-            if (id == 0)
+            if (id == null || id == 0)
             {
                 return RedirectToAction("Index", "Apartments");
             }
             try
             {
-                Apartment a = DbAccess.GetApartmentById(id);
-                ViewBag.Tags = DbAccess.LoadTagsForApartment(id);
+                Apartment a = DbAccess.GetApartmentById((int)id);
+                ViewBag.Tags = DbAccess.LoadTagsForApartment((int)id);
                 return View(a);
             }
             catch (Exception)
