@@ -3,16 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div class="container py-4">
-        <!-- PANEL PORUKA -->
         <asp:Panel ID="PanelIspis" CssClass="container mt-5" runat="server" Visible="False">
             <div class='alert alert-danger' role='alert'>
                 <asp:Label ID="lblErrorLogin" meta:resourcekey="lblErrorLogin" runat="server" Text="Check the entered data again!"></asp:Label>
             </div>
         </asp:Panel>
-        <!-- // -->
 
         <asp:Panel ID="PanelForma" runat="server" Visible="True">
-            <!-- FORM -->
             <fieldset class="p-4">
                 <legend runat="server" meta:resourcekey="legendLogin">Prijava</legend>
                 <div class="mb-3">
@@ -27,7 +24,6 @@
                 </div>
                 <asp:Button ID="btnLogin" meta:resourcekey="btnLogin" class="btn btn-primary" runat="server" Text="Prijava" OnClick="btnLogin_Click" />
             </fieldset>
-            <!-- // -->
         </asp:Panel>
     </div>
 </asp:Content>
