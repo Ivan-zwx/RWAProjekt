@@ -56,15 +56,6 @@ namespace Admin
             ddlStatusFilter.DataBind();
         }
 
-        private void RemoveDeletedApartments()
-        {
-            _apartments.ToList().ForEach(x =>
-            {
-                if (x.DeletedAt != null) _apartments.Remove(x);
-            });
-        }
-
-
         protected void btnUredi_Click(object sender, EventArgs e)
         {
             pnlApartments.Visible = false;
@@ -106,13 +97,10 @@ namespace Admin
             string status = ddlStatusFilter.SelectedItem.Text;
             string city = ddlCityFilter.SelectedItem.Text;
             var allApartments = DbAccess.LoadApartmentsByCityAndStatus(status, city);
-            // gore procedura ne povezuje deletedat na bazi sa deletedat na modelu !!! - zbog toga stvar ne radi
 
             allApartments.ForEach(x => x.DeletedAt = DbAccess.QueryApartmentDeletedStatus(x.Id).ToString());
             _apartments = allApartments.Where(x => !x.DeletedAt.Equals("1")).ToList();
-            // sad sve radi - radi i validacija i soft delete apartmana - nema greski!
 
-            //RemoveDeletedApartments();
             Repeater.DataSource = _apartments;
             Repeater.DataBind();
         }
