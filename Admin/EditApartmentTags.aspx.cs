@@ -54,8 +54,6 @@ namespace Admin
 
         protected void btnAddTag_Click(object sender, EventArgs e)
         {
-            // NEED TO IMPLEMENT FUNCTIONALITY (NEW PROCEDURE AND DAL METHOD PROBABLY)
-
             Tag t = _allTags.FirstOrDefault(x => x.Name == ddlTags.SelectedItem.Text);
             if (_selectedtags.Add(t))
             {
@@ -73,8 +71,6 @@ namespace Admin
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
-            // NEED TO IMPLEMENT FUNCTIONALITY (NEW PROCEDURE AND DAL METHOD PROBABLY)
-
             Button button = sender as Button;
             string name = button.CommandArgument;
             Tag t = _selectedtags.FirstOrDefault(x => x.Name == name);
@@ -93,9 +89,6 @@ namespace Admin
         protected void btnSpremi_Click(object sender, EventArgs e)
         {
             int selected_apartment_id = (int)Session["apartment_id"];
-
-            // na bazu - pobrisi sve tagove apartmana
-            // na bazu - dodaj sve odabrane tagove na apartman
 
             DbAccess.RemoveAllTaggedApartmentsById(selected_apartment_id);
             foreach (var selectedTag in _selectedtags)
