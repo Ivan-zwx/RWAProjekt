@@ -27,6 +27,7 @@
             <p class="card-text">Djeca: @item.MaxChildren</p>
             <p class="card-text" style="font-weight:bold;">@Math.Round(item.Price, 2)$</p>
             @Html.ActionLink("Detalji", "Details", new { @id = item.Id }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Recenzije", "Reviews", new { @id = item.Id }, new { @class = "btn btn-secondary" })
         </div>
     </div>
 }

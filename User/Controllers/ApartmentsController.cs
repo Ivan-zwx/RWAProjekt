@@ -71,6 +71,22 @@ namespace User.Controllers
             }
         }
 
+        public ActionResult Reviews(Nullable<int> id)
+        {
+            if (id == null || id == 0)
+            {
+                return RedirectToAction("Index", "Apartments");
+            }
+            try
+            {
+                return View();
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Apartments");
+            }
+        }
+
         [HttpPost]
         public ActionResult Filter(string city, int adults, int children, int rooms, int sort)
         {
