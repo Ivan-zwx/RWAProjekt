@@ -33,6 +33,16 @@
             <div style="width: 100%;">
                 @Html.AntiForgeryToken()
                 <div class="form-group">
+                    @Html.Label("review-stars", "Ocijenite apartman", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <select class="form-select" style="width:10%" name="stars" id="starselection">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option selected>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     @Html.Label("review-content-label", "Opisite svoje iskustvo", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <textarea class="form-control" style="resize:none" maxlength="800" name="reviewcontent" id="reviewcontent" cols="40" rows="8" value=""></textarea>
@@ -84,12 +94,15 @@
                 return;
             }
 
+            let starSelection = document.getElementById("starselection");
+            var selectedStars = starSelection.options[starSelection.selectedIndex].value;
+
             $.ajax({
                 url: '@Url.Action("SubmitReview", "Review")',
                 data: JSON.stringify({
                     'userId': @user.Id,
                     'apartmentName': selectedApartment.toString(),
-                    'stars' : @defaultStars,
+                    'stars': Number(selectedStars.toString()),
                     'details': $('#reviewcontent').val().toString()
                 }),
                 type: "POST",
