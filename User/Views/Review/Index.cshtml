@@ -7,6 +7,11 @@
 }
 
 <div class="row">
+    <div style="text-align: center; display: none;" id="alert" class="alert alert-info" role="alert">
+        <label id="alert-text"></label>
+    </div>
+</div>
+<div class="row">
     <form id="review-form" style="" class="col-md-8 offset-md-2">
         <div class="form-group" style="margin-top:2rem; margin-bottom:2rem">
             @Html.Label("apartments", "Apartman", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,7 +48,7 @@
     </form>
 </div>
 
-
+<!--
 <script>
     // radi:
     function Testing() {
@@ -67,6 +72,7 @@
         alert($('#reviewcontent').val().toString());
     }
 </script>
+-->
 
 @section jquery{
     <script>
