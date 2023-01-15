@@ -98,6 +98,17 @@
                         <input type="submit" id='btnBook' value="Rezerviraj" class="btn btn-primary" />
                     </div>
                 </div>
+
+                <div class="modal fade" id="captchaPopup" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </fieldset>
     </form>
@@ -234,3 +245,11 @@
 
     </script>
 }
+
+<script>
+    $(document).ready(function () {
+        $('#btnBook').click(function (e) {
+            $('#captchaPopup').modal('show');
+        });
+    });
+</script>
