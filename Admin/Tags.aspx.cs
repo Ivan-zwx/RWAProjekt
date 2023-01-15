@@ -32,17 +32,6 @@ namespace Admin
             rptTags.DataBind();
         }
 
-        /*
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int tagID = int.Parse(btn.CommandArgument);
-
-            gvAparments.DataSource = DbAccess.LoadApartmentsByTagID(tagID);
-            gvAparments.DataBind();
-        }
-        */
-
         protected void btnAddTag_Click(object sender, EventArgs e)
         {
             Response.Redirect("AddTag.aspx");

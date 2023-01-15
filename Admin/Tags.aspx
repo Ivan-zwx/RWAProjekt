@@ -40,13 +40,4 @@
             <asp:Button ID="btnAddTag" OnClick="btnAddTag_Click" CssClass="btn btn-primary" runat="server" Text="Dodaj" />
         </fieldset>
     </div>
-    <!--
-            <div class="col-md-6">
-                <asp:GridView ID="gvAparments" AutoGenerateColumns="false" CssClass="table" runat="server">
-                    <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Naziv apartmana" />
-                    </Columns>
-                </asp:GridView>
-            </div>
-            -->
 </asp:Content>
