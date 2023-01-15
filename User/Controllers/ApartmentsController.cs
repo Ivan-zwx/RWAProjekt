@@ -79,7 +79,8 @@ namespace User.Controllers
             }
             try
             {
-                return View();
+                IList<Review> ar = DbAccess.QueryReviewsForApartment((int)id);
+                return View(ar);
             }
             catch (Exception)
             {

@@ -14,5 +14,6 @@ namespace DAL.Models
         public string CreatedAt { get; set; }
         public string Details { get; set; }
         public int Stars { get; set; }
+        public string UserName { get; set; }
     }
 }

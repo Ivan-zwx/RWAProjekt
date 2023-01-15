@@ -15,6 +15,31 @@ namespace DAL.DatabaseAccess
         private static string ConnectionString =
             $"Server={System.Environment.MachineName}; Database=RwaApartmani; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True";
 
+        public static IList<Review> QueryReviewsForApartment(int apartmentId)
+        {
+            SqlParameter[] procedureParameters = new SqlParameter[1];
+            procedureParameters[0] = new SqlParameter($"@ApartmentId", SqlDbType.Int)
+            { Direction = ParameterDirection.Input, Value = apartmentId };
+
+            var tblApartmentReviews = SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, nameof(QueryReviewsForApartment), procedureParameters).Tables[0];
+
+            IList<Review> reviews = new List<Review>();
+            foreach (DataRow row in tblApartmentReviews.Rows)
+            {
+                reviews.Add(new Review
+                {
+                    Id = (int)row[nameof(Review.Id)],
+                    ApartmentId = (int)row[nameof(Review.ApartmentId)],
+                    UserId = (int)row[nameof(Review.UserId)],
+                    CreatedAt = row[nameof(Review.CreatedAt)].ToString(),
+                    Details = row[nameof(Review.Details)].ToString(),
+                    Stars = (int)row[nameof(Review.Stars)],
+                    UserName = row["UserName"].ToString()
+                });
+            }
+            return reviews;
+        }
+
         public static IList<Apartment> QueryReservedApartmentsForUser(int userId)
         {
             SqlParameter[] procedureParameters = new SqlParameter[1];
