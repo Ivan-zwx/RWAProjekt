@@ -80,6 +80,7 @@ namespace User.Controllers
             try
             {
                 IList<Review> ar = DbAccess.QueryReviewsForApartment((int)id);
+                ViewBag.ApartmentName = DbAccess.GetApartmentById((int)id).Name;
                 return View(ar);
             }
             catch (Exception)

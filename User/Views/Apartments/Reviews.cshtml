@@ -2,15 +2,14 @@
 
 @{
     ViewBag.Title = "ApartmentReviews";
+    string apartmentName = ViewBag.ApartmentName;
 }
-
-<h2>ApartmentReviews</h2>
 
 <style>
     #review-container {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
+        flex-direction: column;
         gap: 30px;
         width: 90%;
     }
@@ -22,16 +21,25 @@
     }
 </style>
 
-<div id="review-container" class="p-2 m-auto">
-    @foreach (var ar in Model)
-    {
-        <div class="card" style="width: 20rem;">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">Korisnik: @ar.UserName</p>
-                <p class="card-text">Ocjena: @ar.Stars</p>
-                <p class="card-text">Komentar: @ar.Details</p>
-            </div>
+<div>
+    <div class="row" style="margin-bottom:3rem">
+        <div class="col-md-8 offset-md-1">
+            <h3>Recenzije za apartman</h3>
+            <h5>@apartmentName</h5>
         </div>
-    }
+    </div>
+
+    <div id="review-container" class="p-2 m-auto">
+        @foreach (var ar in Model)
+        {
+            <div class="card" style="width: 40rem;">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">Korisnik: @ar.UserName</p>
+                    <p style="color:blue" class="card-text">Ocjena: @ar.Stars</p>
+                    <p class="card-text">Komentar: @ar.Details</p>
+                </div>
+            </div>
+        }
+    </div>
 </div>
