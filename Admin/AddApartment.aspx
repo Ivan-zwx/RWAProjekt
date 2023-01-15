@@ -60,48 +60,7 @@
                 <asp:Label ID="Label2" CssClass="form-label" for="ddlOwner" meta:resourcekey="lblDdlCity" runat="server" Text="Vlasnik"></asp:Label>
                 <asp:DropDownList ID="ddlOwner" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
-            <!--
-            <div class="col">
-                <asp:Label ID="lblTags" CssClass="form-label" for="ddlTags" meta:resourcekey="lblDdlTag" runat="server" Text="Oznake"></asp:Label>
-                <asp:DropDownList AutoPostBack="false" ID="ddlTags" CssClass="form-select" runat="server"></asp:DropDownList>
-                <asp:Button Style="margin-top: 10px;" ID="btnAddTag" CssClass="btn btn-primary" OnClick="btnAddTag_Click" runat="server" Text="Dodaj tag" CausesValidation="false" />
-            </div>
-            -->
         </div>
-        <!--
-        <div class="container p-4">
-            <asp:Repeater ID="rptTags" runat="server">
-                <HeaderTemplate>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Naziv</th>
-                                <th scope="col">Kreirano</th>
-                                <th scope="col">Tip</th>
-                                <th hidden="hidden"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                </HeaderTemplate>
-                <ItemTemplate>
-                    <tr>
-                        <th scope="row"><%# Eval("Id") %></th>
-                        <td><%# Eval("Name") %></td>
-                        <td><%# Eval("CreatedAt") %></td>
-                        <td><%# Eval("Type") %></td>
-                        <td>
-                            <asp:LinkButton CausesValidation="false" OnClick="btnRemove_Click" CommandArgument='<%# Eval("Name") %>' ID="btnRemove" runat="server">Ukloni</asp:LinkButton>
-                        </td>
-                    </tr>
-                </ItemTemplate>
-                <FooterTemplate>
-                    </tbody>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
-        </div>
-        -->
         <div class="row p-5">
             <div class="btn-group gap-2" style="width: 50%; align-self: center; margin: 0 auto;">
                 <asp:Button runat="server" Text="Dodaj" ID="btnSpremi" OnClick="btnSpremi_Click" CssClass="btn btn-outline-primary" />
