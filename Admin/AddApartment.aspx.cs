@@ -76,13 +76,5 @@ namespace Admin
             _allStatuses.Clear();
             Response.Redirect("Apartments.aspx");
         }
-
-        protected void btnAddTag_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void btnRemove_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

@@ -71,10 +71,6 @@ namespace Admin
             ddlOwner.DataBind();
         }
 
-        protected void btnAddTag_Click(object sender, EventArgs e)
-        {
-        }
-
         protected void btnOdustani_Click(object sender, EventArgs e)
         {
             _allCities.Clear();
@@ -101,14 +97,6 @@ namespace Admin
             });
             Session["apartment_id"] = null;
             Response.Redirect("Apartments.aspx");
-        }
-
-        protected void btnRemove_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void txtName_TextChanged(object sender, EventArgs e)
-        {
         }
     }
 }
