@@ -99,15 +99,34 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="captchaPopup" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-
+                @if (user == null)
+                {
+                    <p id="captchaCheck" style="display:none">n</p>
+                    <div class="modal fade" id="captchaPopup" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="width:500px; height:250px">
+                                <div class="modal-body">
+                                    <script src="~/Captcha/captcha.js"></script>
+                                    <div>
+                                        <p id="image" style="font-style:italic; text-decoration:line-through; font-size:x-large; color:darkred">Text</p>
+                                    </div>
+                                    <div>
+                                        <input id="submit" class="form-control" />
+                                    </div>
+                                    <div>
+                                        <p id="key">Not matched</p>
+                                    </div>
+                                    <div>
+                                        <input class="btn btn-outline-secondary" style="" value="Submit" onclick="printmsg()" />
+                                    </div>
+                                    <script>
+                                        generate();
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
 
             </div>
         </fieldset>
@@ -184,6 +203,11 @@
     {
         <script>
             function SubmitContact() {
+                var checkread = document.getElementById("captchaCheck").innerHTML
+                if (checkread == 'n') {
+                    return;
+                }
+
                 $.ajax({
                     url: '@Url.Action("BookNonExisting", "Apartments")',
                     data: JSON.stringify({
@@ -248,8 +272,12 @@
 
 <script>
     $(document).ready(function () {
-        $('#btnBook').click(function (e) {
-            $('#captchaPopup').modal('show');
+        var clicked = 0;
+        $('#username').click(function (e) {
+            if (clicked == 0) {
+                $('#captchaPopup').modal('show');
+                clicked = 1;
+            }
         });
     });
 </script>

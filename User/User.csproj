@@ -123,6 +123,7 @@
     <Compile Include="Utilities\CookieUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Captcha\captcha.js" />
     <Content Include="ContentScriptsManual\jquery.validate.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
