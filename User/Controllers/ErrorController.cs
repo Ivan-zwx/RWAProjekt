@@ -8,7 +8,6 @@ namespace User.Controllers
 {
     public class ErrorController : Controller
     {
-        // GET: Error
         public ActionResult Index(string error)
         {
             ViewBag.Error = error;

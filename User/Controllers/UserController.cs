@@ -14,7 +14,6 @@ namespace User.Controllers
     {
         public UserController() {}
 
-        // GET: User
         public ActionResult Index()
         {
             if (Session["user"] == null)
@@ -24,7 +23,6 @@ namespace User.Controllers
             return View((DAL.Models.User)Session["user"]);
         }
 
-        // GET: User/Login
         [HttpGet]
         public ActionResult Login()
         {
@@ -32,7 +30,6 @@ namespace User.Controllers
             return View();
         }
 
-        //POST: User/Login
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
@@ -46,19 +43,6 @@ namespace User.Controllers
             ViewBag.IsAuthorized = true;
             Session["user"] = u;
 
-            /*
-            HttpCookie cookie_email = new HttpCookie("user_email");
-            cookie_email.Value = u.Email;
-            cookie_email.Expires = DateTime.Now.AddDays(1);
-
-            HttpCookie cookie_pass = new HttpCookie("user_pass");
-            cookie_pass.Value = u.PasswordHash;
-            cookie_pass.Expires = DateTime.Now.AddDays(1);
-
-            Response.SetCookie(cookie_email);
-            Response.SetCookie(cookie_pass);
-            */
-
             this.CreateCookie("user_email", u.Email);
             this.CreateCookie("user_pass", u.PasswordHash);
 
@@ -67,17 +51,6 @@ namespace User.Controllers
 
         public ActionResult Logout()
         {
-            /*
-            if (Request.Cookies["user_email"] != null)
-            {
-                Response.Cookies["user_email"].Expires = DateTime.Now.AddDays(-1);
-            }
-            if (Request.Cookies["user_pass"] != null)
-            {
-                Response.Cookies["user_pass"].Expires = DateTime.Now.AddDays(-1);
-            }
-            */
-
             this.DeleteCookie("user_email");
             this.DeleteCookie("user_pass");
             Session.RemoveAll();
@@ -86,14 +59,12 @@ namespace User.Controllers
             return RedirectToAction("Index", "Apartments");
         }
 
-        // GET: User/Create
         public ActionResult Create()
         {
             ViewBag.IsValid = true;
             return View();
         }
 
-        // POST: User/Create
         [HttpPost]
         public ActionResult Create(DAL.Models.User u)
         {
@@ -111,7 +82,6 @@ namespace User.Controllers
             }
         }
 
-        // GET: User/Edit
         public ActionResult Edit()
         {
             if (Session["user"] == null) return RedirectToAction("Index", "Home");
@@ -120,7 +90,6 @@ namespace User.Controllers
             return View((DAL.Models.User)Session["user"]);
         }
 
-        // POST: User/Edit
         [HttpPost]
         public ActionResult Edit(DAL.Models.User u)
         {
@@ -138,7 +107,6 @@ namespace User.Controllers
             }
         }
 
-        // POST: User/Delete
         public ActionResult Delete()
         {
             try

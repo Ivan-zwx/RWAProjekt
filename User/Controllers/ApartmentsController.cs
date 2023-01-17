@@ -13,7 +13,6 @@ namespace User.Controllers
     {
         public ApartmentsController() {}
 
-        // GET: Apartments
         public ActionResult Index()
         {
             List<Apartment> apartments = DbAccess.LoadApartments().ToList();
@@ -144,21 +143,10 @@ namespace User.Controllers
             return Json("Rezervacija je proslijedena administratoru");
         }
 
-        /*
-        private void DeleteCookie(string name)
-        {
-            if (Request.Cookies[name] != null)
-            {
-                Response.Cookies[name].Expires = DateTime.Now.AddDays(-1);
-            }
-        }
-        */
-
         private void FilterApartments(List<Apartment> apartments, string city, int adults, int children, int rooms, int sort)
         {
             apartments.ToList().ForEach(a =>
             {
-                // promijenio filtriranje da trazi manje od unesenog, ne jednako unesenom
                 if (a.DeletedAt != "" || a.Status != "Slobodno" || a.City != city || a.MaxAdults < adults || a.MaxChildren < children || a.TotalRooms < rooms)
                 {
                     apartments.Remove(a);
@@ -182,30 +170,6 @@ namespace User.Controllers
             ViewBag.Rooms = rooms;
             ViewBag.Sort = sort;
         }
-
-        /*
-        private void SetOrCreateCookie(string name, string value)
-        {
-            if (Request.Cookies[name] != null)
-            {
-                Response.Cookies[name].Value = value;
-            }
-            else
-            {
-                CreateCookie(name, value);
-            }
-        }
-        */
-
-        /*
-        private void CreateCookie(string name, string value)
-        {
-            HttpCookie cookie = new HttpCookie(name);
-            cookie.Value = value;
-            cookie.Expires = DateTime.Now.AddDays(1);
-            Response.SetCookie(cookie);
-        }
-        */
 
         private void SetDefaultViewBag()
         {

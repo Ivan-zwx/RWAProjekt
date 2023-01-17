@@ -13,16 +13,10 @@ namespace User.Controllers
 {
     public class ReviewController : Controller
     {
-        // NIJE RADILO ZBOG PONOVNOG INSTANCIRANJA KONTROLERA IZMEDU DVA ACTIONRESULTA - STATIC VARIJABLA JE QUICK FIX (SINGLE USER) RJESENJE - TREBA NACI BOLJE
-        //static List<Apartment> reservedApartments;
-
-        // GET: Review
         public ActionResult Index()
         {
             if (Session["user"] != null)
             {
-                // load apartments that the user has reserved in the past from the database
-                // note: submit button on form should be disabled if user has no reservations or none are selected
                 var reservedApartments = QueryReservedApartments();
                 return View(reservedApartments);
             }
@@ -35,7 +29,6 @@ namespace User.Controllers
         [HttpPost]
         public ActionResult SubmitReview(int userId, string apartmentName, int stars, string details)
         {
-            // postoji nekakvo bolje selection model rjesenje (u view-u)?
             try
             {
                 var reservedApartments = QueryReservedApartments();
