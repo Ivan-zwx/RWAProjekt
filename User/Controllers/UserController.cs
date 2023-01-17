@@ -71,7 +71,6 @@ namespace User.Controllers
             try
             {
                 DbAccess.AddUser(u);
-
                 return RedirectToAction("Login", "User");
             }
             catch (Exception ex)
