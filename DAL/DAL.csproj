@@ -62,8 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DatabaseSetup\00_RwaApartmani.bak" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DatabaseSetup\01_RwaTestniPodatci.sql" />
+    <Content Include="DatabaseSetup\02_RwaProcedure.sql" />
+    <Content Include="DatabaseSetup\Napomene.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
