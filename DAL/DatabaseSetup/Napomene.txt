@@ -2,4 +2,4 @@ Napomene:
 
 -> Connection string za bazu se nalazi u DAL projektu - u DatabaseAccess/DbAccess direktoriju i klasi (zbog lakseg testiranja)
 
--> Login podaci za administracijsko sucelje su username="admin" password="admin" (bez navodnika)
+-> Login podatci za administracijsko sucelje su username="admin" password="admin" (bez navodnika)
