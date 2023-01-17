@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Review";
     DAL.Models.User user = ViewBag.User;
-    int defaultStars = 0;
 }
 
 <div class="row">
@@ -57,32 +56,6 @@
         </fieldset>
     </form>
 </div>
-
-<!--
-<script>
-    // radi:
-    function Testing() {
-        let apartmentSelection = document.getElementById("apartmentselection");
-        var selectedApartment = apartmentSelection.options[apartmentSelection.selectedIndex].value;
-        if (selectedApartment == "Odaberite apartman") {
-            return;
-        }
-        alert(selectedApartment.toString());
-    }
-    // radi:
-    function Testing2() {
-        alert(@user.Id);
-    }
-    // radi:
-    function Testing3() {
-        alert(@defaultStars);
-    }
-    // radi:
-    function Testing4() {
-        alert($('#reviewcontent').val().toString());
-    }
-</script>
--->
 
 @section jquery{
     <script>
