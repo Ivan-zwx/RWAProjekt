@@ -13,76 +13,89 @@
 <div id="apartment-container" class="p-2 m-auto">
     @Html.Partial("_ListApartment", Model)
 </div>
-<div class="w-100" style="padding: 0 20px; margin-bottom: 40px; display:flex; flex-direction:row;">
-    <div class="w-25">
-        <div class="form-group">
-            @Html.Label("cities", "Grad", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select class="form-select" name="cities" id="cities">
-                    @foreach (DAL.Models.City c in cities)
-                    {
-                        if (city != null && c.Name == city)
+<hr />
+<div class="">
+    <div class="w-100 justify-content-center" style="padding-top: 40px; margin-bottom: 5px; display:flex; flex-direction:row;">
+        <div class="w-25">
+            <div class="form-group">
+                @Html.Label("cities", "Grad", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select class="form-select" name="cities" id="cities">
+                        @foreach (DAL.Models.City c in cities)
                         {
-                            <option selected>@c.Name</option>
+                            if (city != null && c.Name == city)
+                            {
+                                <option selected>@c.Name</option>
+                            }
+                            else
+                            {
+                                <option>@c.Name</option>
+                            }
                         }
-                        else
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="w-25">
+            <div class="form-group">
+                @Html.Label("sort", "Sortiranje", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select class="form-select" name="sort" id="sort">
+                        @switch (ViewBag.Sort)
                         {
-                            <option>@c.Name</option>
+                            case 1:
+                                <option value="0">Nema</option>
+                                <option value="1" selected>Uzlazno</option>
+                                <option value="2">Silazno</option>
+                                break;
+
+                            case 2:
+                                <option value="0">Nema</option>
+                                <option value="1">Uzlazno</option>
+                                <option value="2" selected>Silazno</option>
+                                break;
+
+                            default:
+                                <option value="0" selected>Nema</option>
+                                <option value="1">Uzlazno</option>
+                                <option value="2">Silazno</option>
+                                break;
                         }
-                    }
-                </select>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("rooms", "Sobe", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.Editor("rooms", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = rooms.ToString() } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("adults", "Odrasli", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.Editor("adults", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = adults.ToString() } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("children", "Djeca", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.Editor("children", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = children.ToString() } })
-            </div>
-        </div>
-        <div class="form-group">
-            <input type="submit" id="btnFilter" value="Primijeni" class="btn btn-primary mt-2" />
-            @Html.ActionLink("Resetiraj", "Reset", new { @o = "" }, new { @class = "btn btn-secondary mt-2" })
         </div>
     </div>
-    <div class="w-25">
-        <div class="form-group">
-            @Html.Label("sort", "Sortiranje", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select class="form-select" name="sort" id="sort">
-                    @switch (ViewBag.Sort)
-                    {
-                        case 1:
-                            <option value="0">Nema</option>
-                            <option value="1" selected>Uzlazno</option>
-                            <option value="2">Silazno</option>
-                            break;
-
-                        case 2:
-                            <option value="0">Nema</option>
-                            <option value="1">Uzlazno</option>
-                            <option value="2" selected>Silazno</option>
-                            break;
-
-                        default:
-                            <option value="0" selected>Nema</option>
-                            <option value="1">Uzlazno</option>
-                            <option value="2">Silazno</option>
-                            break;
-                    }
-                </select>
+    <div class="w-100 justify-content-center" style="padding-top: 5px; margin-bottom: 15px; display:flex; flex-direction:row;">
+        <div class="w-auto">
+            <div class="form-group">
+                @Html.Label("rooms", "Sobe", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("rooms", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = rooms.ToString() } })
+                </div>
             </div>
+        </div>
+        <div class="w-auto">
+            <div class="form-group">
+                @Html.Label("adults", "Odrasli", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("adults", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = adults.ToString() } })
+                </div>
+            </div>
+        </div>
+        <div class="w-auto">
+            <div class="form-group">
+                @Html.Label("children", "Djeca", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("children", new { htmlAttributes = new { @class = "form-control", @type = "number", @Value = children.ToString() } })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 justify-content-center" style="padding-top: 5px; margin-bottom: 5px; display:flex; flex-direction:row;">
+        <div class="form-group">
+            <input type="submit" id="btnFilter" value="Primijeni" class="btn btn-primary mt-2" style="width: 150px" />
+            @Html.ActionLink("Resetiraj", "Reset", new { @o = "" }, new { @class = "btn btn-secondary mt-2", @style = "width: 150px" })
         </div>
     </div>
 </div>
