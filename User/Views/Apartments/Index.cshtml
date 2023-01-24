@@ -10,6 +10,9 @@
     int sort = ViewBag.Sort;
 }
 
+<div id="apartment-container" class="p-2 m-auto">
+    @Html.Partial("_ListApartment", Model)
+</div>
 <div class="w-100" style="padding: 0 20px; margin-bottom: 40px; display:flex; flex-direction:row;">
     <div class="w-25">
         <div class="form-group">
@@ -82,9 +85,6 @@
             </div>
         </div>
     </div>
-</div>
-<div id="apartment-container" class="p-2 m-auto">
-    @Html.Partial("_ListApartment", Model)
 </div>
 
 @section jquery{
