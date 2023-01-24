@@ -112,7 +112,7 @@ namespace User.Controllers
             }
             catch
             {
-                return Json("Neuspješna rezervacija");
+                return Json("Neuspjesna rezervacija");
             }
             return Content("Rezervacija je proslijedena administratoru");
         }
@@ -126,7 +126,7 @@ namespace User.Controllers
             }
             catch
             {
-                return Json("Neuspješna rezervacija");
+                return Json("Neuspjesna rezervacija");
             }
             return Json("Rezervacija je proslijedena administratoru");
         }
