@@ -17,7 +17,7 @@ namespace User.Controllers
         {
             List<Apartment> apartments = DbAccess.LoadApartments().ToList();
 
-            if (Request.Cookies["city"] == null || Request.Cookies["adults"] == null || Request.Cookies["children"] == null || Request.Cookies["rooms"] == null || Request.Cookies["sort"] == null)
+            if (PreferenceCookiesMissing())
             {
                 apartments.ToList().ForEach(x =>
                 {
@@ -178,6 +178,15 @@ namespace User.Controllers
             ViewBag.Children = 0;
             ViewBag.Rooms = 1;
             ViewBag.Sort = 0;
+        }
+
+        private bool PreferenceCookiesMissing()
+        {
+            return (Request.Cookies["city"] == null ||
+                    Request.Cookies["adults"] == null ||
+                    Request.Cookies["children"] == null ||
+                    Request.Cookies["rooms"] == null ||
+                    Request.Cookies["sort"] == null) ? true : false;
         }
     }
 }
