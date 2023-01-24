@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
     IList<DAL.Models.City> cities = (IList<DAL.Models.City>)ViewBag.Cities;
+    List<DAL.Models.City> sortedCities = new List<DAL.Models.City>(cities);
+    sortedCities.Sort((x, y) => x.Name.CompareTo(y.Name));
     string city = ViewBag.City;
     int adults = ViewBag.Adults;
     int children = ViewBag.Children;
@@ -17,7 +19,7 @@
                 @Html.Label("cities", "Grad", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <select class="form-select" name="cities" id="cities">
-                        @foreach (DAL.Models.City c in cities)
+                        @foreach (DAL.Models.City c in sortedCities)
                         {
                             if (city != null && c.Name == city)
                             {
@@ -90,8 +92,8 @@
     </div>
     <div class="w-100 justify-content-center" style="padding-top: 5px; padding-bottom: 20px; display:flex; flex-direction:row;">
         <div class="form-group">
-            <input type="submit" id="btnFilter" value="Primijeni" class="btn btn-primary mt-2" style="width: 150px" />
-            @Html.ActionLink("Resetiraj", "Reset", new { @o = "" }, new { @class = "btn btn-secondary mt-2", @style = "width: 150px" })
+            <input type="submit" id="btnFilter" value="Primijeni" class="btn btn-outline-primary mt-2" style="width: 150px" />
+            @Html.ActionLink("Resetiraj", "Reset", new { @o = "" }, new { @class = "btn btn-outline-secondary mt-2", @style = "width: 150px" })
         </div>
     </div>
 </div>
