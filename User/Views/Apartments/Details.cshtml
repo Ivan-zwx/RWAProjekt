@@ -9,7 +9,6 @@
     string phone = user?.PhoneNumber;
 }
 
-
 <div style="display:flex; align-items:center; justify-content:center;">
     <div style="display:none; position:sticky; top:0; width: 70%;" id="alert" class="alert alert-info" role="alert">
         <label id="alert-text"></label>
@@ -22,26 +21,26 @@
             <div style="width: 200px; height: 180px;" id="rep-img">
 
             </div>
-            <ul>
-                <li>@Model.Address</li>
-                <li>Udaljenost od obale: @Model.BeachDistance</li>
-                <li>Sobe: @Model.TotalRooms</li>
-                <li>Odrasli: @Model.MaxAdults</li>
-                <li>Djeca: @Model.MaxChildren</li>
-                <li>Vlasnik: @Model.Owner</li>
+            <ul class="list-group list-group-flush" style="padding-left: 30px;">
+                <li class="list-group-item">Adresa: @Model.Address</li>
+                <li class="list-group-item">Udaljenost od obale: @Model.BeachDistance</li>
+                <li class="list-group-item">Sobe: @Model.TotalRooms</li>
+                <li class="list-group-item">Odrasli: @Model.MaxAdults</li>
+                <li class="list-group-item">Djeca: @Model.MaxChildren</li>
+                <li class="list-group-item">Vlasnik: @Model.Owner</li>
             </ul>
         </div>
-        <p style="font-weight:bold; margin: 30px 10px;">@Math.Round(Model.Price, 2)$</p>
-        <p>Oprema:</p>
-        <ul style="display:flex; flex-direction: column; flex-wrap:wrap; max-height: 200px;">
+        <p style="font-weight:bold;">Cijena: @Math.Round(Model.Price, 2)$</p>
+        <p style="padding-top: 30px; font-weight:bold">Oprema:</p>
+        <ul style="display: flex; flex-direction: column; flex-wrap: wrap; max-height: 200px; list-style-type: circle;">
             @foreach (DAL.Models.Tag tag in tags)
             {
                 <li>@tag.Name</li>
             }
         </ul>
     </div>
-
-    <form id="contact-form" style="width:50%; margin-left: 100px;">
+    <div style="border-left: 2px solid grey; height: 550px"></div>
+    <form id="contact-form" style="width:50%; margin-left: 100px; padding-left:30px">
         <fieldset>
             <legend>Kontakt</legend>
             <div style="width: 50%;">
@@ -95,7 +94,7 @@
 
                 <div class="form-group mt-2">
                     <div class="col-md-10">
-                        <input type="submit" id='btnBook' value="Rezerviraj" class="btn btn-primary" />
+                        <input type="submit" id='btnBook' value="Rezerviraj" class="btn btn-primary" style="margin-top:10px"/>
                     </div>
                 </div>
 
