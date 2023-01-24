@@ -10,12 +10,8 @@
     int sort = ViewBag.Sort;
 }
 
-<div id="apartment-container" class="p-2 m-auto">
-    @Html.Partial("_ListApartment", Model)
-</div>
-<hr />
-<div class="">
-    <div class="w-100 justify-content-center" style="padding-top: 40px; margin-bottom: 5px; display:flex; flex-direction:row;">
+<div>
+    <div class="w-100 justify-content-center" style="padding-top: 20px; padding-bottom: 5px; display:flex; flex-direction:row;">
         <div class="w-25">
             <div class="form-group">
                 @Html.Label("cities", "Grad", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -66,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="w-100 justify-content-center" style="padding-top: 5px; margin-bottom: 15px; display:flex; flex-direction:row;">
+    <div class="w-100 justify-content-center" style="padding-top: 5px; padding-bottom: 15px; display:flex; flex-direction:row;">
         <div class="w-auto">
             <div class="form-group">
                 @Html.Label("rooms", "Sobe", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -92,12 +88,16 @@
             </div>
         </div>
     </div>
-    <div class="w-100 justify-content-center" style="padding-top: 5px; margin-bottom: 5px; display:flex; flex-direction:row;">
+    <div class="w-100 justify-content-center" style="padding-top: 5px; padding-bottom: 20px; display:flex; flex-direction:row;">
         <div class="form-group">
             <input type="submit" id="btnFilter" value="Primijeni" class="btn btn-primary mt-2" style="width: 150px" />
             @Html.ActionLink("Resetiraj", "Reset", new { @o = "" }, new { @class = "btn btn-secondary mt-2", @style = "width: 150px" })
         </div>
     </div>
+</div>
+<hr style="border-top: dashed"/>
+<div id="apartment-container" class="p-2 m-auto">
+    @Html.Partial("_ListApartment", Model)
 </div>
 
 @section jquery{
