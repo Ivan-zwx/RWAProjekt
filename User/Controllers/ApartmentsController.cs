@@ -19,13 +19,7 @@ namespace User.Controllers
 
             if (PreferenceCookiesMissing())
             {
-                apartments.ToList().ForEach(x =>
-                {
-                    if (x.DeletedAt != "" || x.Status != "Slobodno")
-                    {
-                        apartments.Remove(x);
-                    }
-                });
+                apartments = apartments.Where(x => x.DeletedAt == "" && x.Status == "Slobodno").ToList();
                 SetDefaultViewBag();
             }
             else
@@ -36,13 +30,7 @@ namespace User.Controllers
                 }
                 catch
                 {
-                    apartments.ToList().ForEach(x =>
-                    {
-                        if (x.DeletedAt != "" || x.Status != "Slobodno")
-                        {
-                            apartments.Remove(x);
-                        }
-                    });
+                    apartments = apartments.Where(x => x.DeletedAt == "" && x.Status == "Slobodno").ToList();
                     SetDefaultViewBag();
                 }
             }
