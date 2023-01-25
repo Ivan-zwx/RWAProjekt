@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.DatabaseAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace DAL
     {
         static void Main(string[] args)
         {
-            // dal project...
+
         }
     }
 }

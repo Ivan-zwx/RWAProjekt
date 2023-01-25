@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/User/Scripts/jquery-3.6.3.slim.min.map
+/User/Scripts/jquery-3.6.3.slim.min.js
+/User/Scripts/jquery-3.6.3.slim.js
+/User/Scripts/jquery-3.6.3.min.map
+/User/Scripts/jquery-3.6.3.min.js
+/User/Scripts/jquery-3.6.3.js
+/User/Scripts/jquery-3.6.3.intellisense.js
